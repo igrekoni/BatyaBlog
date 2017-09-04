@@ -11,7 +11,7 @@ def mainpage(request):
         'title': 'Mainpage',
         'postsList': queryset,
     }
-    return render(request, 'index.html', context)
+    return render(request, 'posts/postlist.html', context)
 
 
 def create(request):
@@ -21,8 +21,6 @@ def create(request):
         instance.save()
         messages.success(request, "Created")
         return HttpResponseRedirect(instance.get_absolute_url())
-    else:
-        messages.error(request, "Not created")
     context = {
         'form': form,
     }
