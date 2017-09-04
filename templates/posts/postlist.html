@@ -2,6 +2,12 @@
 
 {% block content %}
     {% for obj in postsList %}
-        <a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> || {{ obj.id }}<br>
+        <div class="blog-post">
+            <h2 class="blog-post-title">{{ obj.title }}</h2>
+            <p class="blog-post-meta">{{ obj.timestamp }} <a href="#">{{ obj.user }}</a></p>
+            <p>{{ obj.previewText }}</p>
+            <a href="{{ obj.get_absolute_url }}">Читать дальше</a><br>
+            <hr>
+          </div>
     {% endfor %}
 {% endblock content %}
