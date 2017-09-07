@@ -1,13 +1,38 @@
 {% extends "index.html" %}
 
 {% block content %}
-    {% for obj in postsList %}
-        <div class="blog-post">
-            <h2 class="blog-post-title">{{ obj.title }}</h2>
-            <p class="blog-post-meta">{{ obj.timestamp }} <a href="#">{{ obj.user }}</a></p>
-            <p>{{ obj.previewText }}</p>
-            <a href="{{ obj.get_absolute_url }}">Читать дальше</a><br>
-            <hr>
-          </div>
-    {% endfor %}
+    <div class="row">
+        {% for obj in postsList %}
+            <div class="col-sm-12">
+                <div class="thumbnail">
+{#                    <img src="..." alt="...">#}
+                    <div class="caption">
+                        <h3><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <small>{{ obj.timestamp|timesince }}</small></h3>
+                        <p>{{ obj.previewText|linebreaks|truncatechars:120 }}</p>
+                        <p><a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">Читать дальше</a></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if postsList.has_previous %}
+                    <a href="?page={{ postsList.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ postsList.number }} of {{ postsList.paginator.num_pages }}.
+                </span>
+
+                {% if postsList.has_next %}
+                    <a href="?page={{ postsList.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+
+
+
+
+    </div>
 {% endblock content %}

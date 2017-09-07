@@ -3,9 +3,10 @@
 {% block title %}БатяБлог - {{ instance.title }}{% endblock title %}
 
 {% block content %}
-    {{ instance.title }}<br>
-    {{ instance.user }}<br>
-    {{ instance.timestamp }}<br>
-    {{ instance.previewText }}<br>
-    {{ instance.fullText }}<br>
+    <div class="col-sm-12">
+        <h1>{{ instance.title }}</h1>
+        <small>Добавил: {{ instance.user }}, {{ instance.timestamp }}</small><hr>
+        <br>
+        {{ instance.fullText|linebreaks }}<br>
+    </div>
 {% endblock content %}
