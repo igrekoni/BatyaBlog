@@ -8,8 +8,9 @@ from .forms import PostForm
 
 def mainpage(request):
     queryset_list = Post.objects.all()
-    paginator = Paginator(queryset_list, 5)
-    page = request.GET.get('page')
+    paginator = Paginator(queryset_list, 2)
+    page_request_var = 'page'
+    page = request.GET.get(page_request_var)
     try:
         queryset = paginator.page(page)
     except PageNotAnInteger:
@@ -19,6 +20,7 @@ def mainpage(request):
     context = {
         'title': 'Mainpage',
         'postsList': queryset,
+        'page_request_var': page_request_var
     }
     return render(request, 'posts/postlist.html', context)
 
