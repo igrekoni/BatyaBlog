@@ -8,7 +8,7 @@ from .forms import PostForm
 
 def mainpage(request):
     queryset_list = Post.objects.all()
-    paginator = Paginator(queryset_list, 2)
+    paginator = Paginator(queryset_list, 5)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
     try:

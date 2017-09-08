@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse
 class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True)
     title = models.CharField(max_length=120, blank=False)
+    image = models.FileField(null=True, blank=True)
     previewText = models.TextField(max_length=260, blank=True)
     fullText = models.TextField()
     #publish = models.DateField(auto_now=False, auto_now_add=False)
