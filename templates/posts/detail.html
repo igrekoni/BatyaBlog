@@ -6,6 +6,9 @@
     <div class="col-sm-12">
         <h1>{{ instance.title }}</h1>
         <small>Добавил: {{ instance.user }}, {{ instance.timestamp }}</small><hr>
+        {% if instance.image %}
+        <img src="{{ instance.image.url }}" alt="{{ instance.title }}" class="img-responsive" />
+        {% endif %}
         <br>
         {{ instance.fullText|linebreaks }}<br>
     </div>

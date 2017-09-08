@@ -1,12 +1,14 @@
-{% load static %}
 {% extends "index.html" %}
+{% load static %}
 
 {% block content %}
     <div class="row">
         {% for obj in postsList %}
             <div class="col-sm-12">
                 <div class="thumbnail">
-{#                    <img src="..." alt="...">#}
+                    {% if obj.image %}
+                        <img src="{{ obj.image.url }}" alt="{{ obj.title }}" class="img-responsive">
+                    {% endif %}
                     <div class="caption">
                         <h3><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <small>{{ obj.timestamp|timesince }}</small></h3>
                         <p>{{ obj.previewText|linebreaks|truncatechars:120 }}</p>
@@ -31,9 +33,5 @@
                 {% endif %}
             </span>
         </div>
-
-
-
-
     </div>
 {% endblock content %}

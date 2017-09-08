@@ -4,10 +4,17 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 
 
+def upload_location(instance, filename):
+    return "%s/%s" % (instance.id, filename)
+
+
 class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True)
     title = models.CharField(max_length=120, blank=False)
-    image = models.FileField(null=True, blank=True)
+    image = models.ImageField(upload_to=upload_location,
+                              null=True, blank=True, height_field='height_field', width_field='width_field')
+    height_field = models.IntegerField(default=0)
+    width_field = models.IntegerField(default=0)
     previewText = models.TextField(max_length=260, blank=True)
     fullText = models.TextField()
     #publish = models.DateField(auto_now=False, auto_now_add=False)
