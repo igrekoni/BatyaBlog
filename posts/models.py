@@ -1,7 +1,10 @@
 from django.db import models
+from django.utils.text import slugify
+
 from posts.utils import categories
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.db.models.signals import pre_save
 
 
 def upload_location(instance, filename):
@@ -17,7 +20,7 @@ class Post(models.Model):
     width_field = models.IntegerField(default=0)
     previewText = models.TextField(max_length=260, blank=True)
     fullText = models.TextField()
-    #publish = models.DateField(auto_now=False, auto_now_add=False)
+    slug = models.SlugField(unique=True)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     category = models.CharField(max_length=40, choices=categories(), default='CH')
@@ -29,7 +32,26 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("posts:detail", kwargs={"id": self.id})
+        return reverse("posts:detail", kwargs={"slug": self.slug})
 
     class Meta:
         ordering = ["-timestamp"]
+
+
+def create_slug(instance, new_slug=None):
+    slug = slugify(instance.title)
+    if new_slug is not None:
+        slug = new_slug
+    qs = Post.objects.filter(slug=slug).order_by("-id")
+    exists = qs.exists()
+    if exists:
+        new_slug = "%s-%s" % (instance, qs.first().id)
+        return create_slug(instance, new_slug=new_slug)
+    return slug
+
+
+def pre_save_post_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = create_slug(instance)
+
+pre_save.connect(pre_save_post_receiver, sender=Post)

@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -26,6 +26,8 @@ def mainpage(request):
 
 
 def create(request):
+    if not request.user.is_staff or not request.user.superuser:
+        raise Http404
     form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         instance = form.save(commit=False)
@@ -38,8 +40,8 @@ def create(request):
     return render(request, 'posts/create.html', context)
 
 
-def detail(request, id=None):
-    instance = get_object_or_404(Post, id=id)
+def detail(request, slug=None):
+    instance = get_object_or_404(Post, slug=slug)
     context = {
         'title': instance.title,
         'instance': instance,
@@ -47,8 +49,10 @@ def detail(request, id=None):
     return render(request, 'posts/detail.html', context)
 
 
-def update(request, id=None):
-    instance = get_object_or_404(Post, id=id)
+def update(request, slug=None):
+    if not request.user.is_staff or not request.user.superuser:
+        raise Http404
+    instance = get_object_or_404(Post, slug=slug)
     form = PostForm(request.POST or None, request.FILES or None, instance=instance)
     if form.is_valid():
         instance = form.save(commit=False)
@@ -63,8 +67,10 @@ def update(request, id=None):
     return render(request, 'posts/create.html', context)
 
 
-def delete(request, id=None):
-    instance = get_object_or_404(Post, id=id)
+def delete(request, slug=None):
+    if not request.user.is_staff or not request.user.superuser:
+        raise Http404
+    instance = get_object_or_404(Post, slug=slug)
     instance.delete()
     messages.success(request, "Удалено")
     return redirect('posts:mainpage')
