@@ -1,3 +1,19 @@
+body {
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+}
+
 .main-container {
     margin-top: 70px;
+}
+
+.footer {
+    height: 220px;
+    background-color: #1b6d85;
+}
+
+.copyright p {
+    text-align: center;
+    margin: 30px 20% 20px 20%;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    font-size: 0.9em;
 }
