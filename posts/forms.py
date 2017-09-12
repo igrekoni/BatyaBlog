@@ -10,5 +10,7 @@ class PostForm(forms.ModelForm):
             'image',
             'previewText',
             'fullText',
-            'category'
+            'category',
+            'draft',
+            'publish',
         ]

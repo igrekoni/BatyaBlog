@@ -21,6 +21,8 @@ class Post(models.Model):
     previewText = models.TextField(max_length=260, blank=True)
     fullText = models.TextField()
     slug = models.SlugField(unique=True)
+    draft = models.BooleanField(default=False)
+    publish = models.DateField(auto_now=False, auto_now_add=False)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     category = models.CharField(max_length=40, choices=categories(), default='CH')
