@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
-
+from unidecode import unidecode
 from posts.utils import categories
 from django.conf import settings
 from django.core.urlresolvers import reverse
@@ -12,7 +12,7 @@ def upload_location(instance, filename):
 
 
 class Post(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
     title = models.CharField(max_length=120, blank=False)
     image = models.ImageField(upload_to=upload_location,
                               null=True, blank=True, height_field='height_field', width_field='width_field')
@@ -39,7 +39,7 @@ class Post(models.Model):
 
 
 def create_slug(instance, new_slug=None):
-    slug = slugify(instance.title)
+    slug = slugify(unidecode(instance.title))
     if new_slug is not None:
         slug = new_slug
     qs = Post.objects.filter(slug=slug).order_by("-id")

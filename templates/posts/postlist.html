@@ -4,7 +4,7 @@
 {% block content %}
     <div class="row">
         {% for obj in postsList %}
-            <div class="col-sm-12">
+            <div class="col-sm-12 news-list">
                 <div class="thumbnail">
                     {% if obj.image %}
                         <img src="{{ obj.image.url }}" alt="{{ obj.title }}" class="img-responsive">
