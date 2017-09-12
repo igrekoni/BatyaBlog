@@ -3,7 +3,7 @@
 {% block title %}БатяБлог - {{ instance.title }}{% endblock title %}
 
 {% block content %}
-    <div class="col-sm-12">
+    <div class="col-sm-12 news-list news-detail">
         <h1>{{ instance.title }}</h1>
         <small>Добавил: {{ instance.user }}, {{ instance.timestamp }}</small><hr>
         {% if instance.image %}

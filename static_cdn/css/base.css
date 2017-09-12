@@ -7,8 +7,7 @@ body {
 }
 
 .footer {
-    height: 220px;
-    background-color: #1b6d85;
+
 }
 
 .copyright p {
@@ -20,6 +19,10 @@ body {
 
 .news-list {
     margin: 0 -15px 0 -15px;
+}
+
+.news-detail h1 {
+    font-size: 32px;
 }
 
 /* TOP MENU */
@@ -93,7 +96,7 @@ body {
 
 #main-nav ul {
   float: left;
-  margin: 0;
+  margin: 0 0 0 30px;
   padding: 0 10px;
   list-style: none;
 }

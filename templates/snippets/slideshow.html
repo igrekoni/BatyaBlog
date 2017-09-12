@@ -1,9 +1,10 @@
+{% load static %}
 <div class="container">
     <div class="row">
         <!-- BEGIN HEADER -->
         <div id="header">
-          <div id="logo"> <a href="#"><img src="img/wireframe/logo.png" alt="" /></a> </div>
-          <div id="ad"> <img src="img/ad-blank.png" alt="" /> </div>
+          <div id="logo"> <a href="#"><img src="{% static 'tmp/logo.png' %}" alt="" /></a> </div>
+          <div id="ad"> <img src="{% static 'tmp/ad-blank.png' %}" alt="" /> </div>
         </div>
         <!-- END HEADER -->
     </div>

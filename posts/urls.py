@@ -16,5 +16,6 @@ urlpatterns = [
     url(r'^(?P<slug>[\w-]+)/$', detail, name='detail'),
     url(r'^(?P<slug>[\w-]+)/edit/$', update, name='update'),
     url(r'^(?P<slug>[\w-]+)/delete/$', delete),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
               + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

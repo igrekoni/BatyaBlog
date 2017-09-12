@@ -2,6 +2,7 @@ from django.http import Http404, HttpResponseRedirect
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 from .models import Post
 from .forms import PostForm
 
