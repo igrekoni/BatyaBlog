@@ -2,7 +2,12 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="description" content="{% block description %}{% endblock description %}" />
+	<link rel="shortcut icon" href="{% static '' %}" />
+
     <title>{% block title %}БатяБлог - всё о детях для мужчин{% endblock title %}</title>
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" />
     <link rel="stylesheet" href="{% static "css/bootstrap-theme.min.css" %}" />
@@ -13,17 +18,19 @@
 {% include "snippets/headmenu.html" %}
 {% include "snippets/slideshow.html" %}
 {% include "snippets/mainmenu.html" %}
-{% include "snippets/messages.html" %}
 
 
     <div class="main-container container">
-      <div class="row">
-        <div class="col-sm-7 col-sm-offset-1 blog-main">
-            {% block content %}{% endblock content %}
+        {% include "snippets/messages.html" %}
+        <div class="row">
+            <div class="col-sm-7 col-sm-offset-1 blog-main">
+                {% block content %}{% endblock content %}
+            </div>
+            <!-- sidebar -->
+            <div class="col-sm-3">
+                {% include "snippets/sidebar.html" %}
+            </div>
         </div>
-        <!-- sidebar -->
-        {% include "snippets/sidebar.html" %}
-      </div>
     </div>
 
 <!-- footer -->

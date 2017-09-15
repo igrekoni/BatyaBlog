@@ -1,25 +1,35 @@
-<div class="col-sm-3  blog-sidebar">
-          <div class="sidebar-module sidebar-module-inset">
-            <h4>О проекте</h4>
-            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-          </div>
-            <hr>
-          <div class="sidebar-module">
-            <h4>Архив новостей</h4>
-            <ol class="list-unstyled">
-              <li><a href="#">March 2014</a></li>
-              <li><a href="#">February 2014</a></li>
-              <li><a href="#">January 2014</a></li>
-              <li><a href="#">December 2013</a></li>
-            </ol>
-          </div>
-            <hr>
-          <div class="sidebar-module">
-            <h4>Мы в соцсетях</h4>
-            <ol class="list-unstyled">
-              <li><a href="#">GitHub</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Facebook</a></li>
-            </ol>
-          </div>
+{% load static %}
+
+<div id="sidebars">
+
+    <h2 class="heading-blue">Профиль</h2>
+    <img src="img/wayne.jpg" alt="" />
+    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h3>
+    <p>Ut sed arcu nulla. In eget lectus vitae purus volutpat consectetur suscipit ut justo.</p>
+    <p><a href="#">More headlines &raquo;</a></p>
+
+    <!-- BEGIN ADS -->
+    <div class="row sidebar-ads">
+        <div class="col-md-6">
+            <a href="#"><img src="{% static 'images/ad.png' %}" alt="" class="img-responsive" /></a>
+        </div>
+        <div class="col-md-6">
+            <a href="#"><img src="{% static 'images/ad.png' %}" alt="" class="img-responsive" /></a>
+        </div>
     </div>
+    <div class="row sidebar-ads">
+        <div class="col-md-6">
+            <a href="#"><img src="{% static 'images/ad.png' %}" alt="" class="img-responsive" /></a>
+        </div>
+        <div class="col-md-6">
+            <a href="#"><img src="{% static 'images/ad.png' %}" alt="" class="img-responsive" /></a>
+        </div>
+    </div>
+    <!-- END ADS -->
+
+    <h2 class="heading">Celebrity Sightings</h2>
+    <img src="img/casey.jpg" alt="" class="ad" /> <img src="img/hobo.jpg" alt="" class="ad-right" />
+    <h2 class="heading">In the Community</h2>
+    <h4><a href="#">Lorem ipsum dolor sit amet eget, consectetur adipiscing elit</a></h4>
+    <h4><a href="#">Lorem ipsum dolor sit amet eget, consectetur adipiscing elit</a></h4>
+</div>

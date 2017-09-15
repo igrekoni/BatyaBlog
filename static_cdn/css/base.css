@@ -1,13 +1,32 @@
 body {
-    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+  font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+  background-image: url("../images/giftly.png");
 }
 
 .main-container {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .footer {
+  background-color: whitesmoke;
+}
 
+.current {
+  margin: 0 15px 0 15px;
+}
+
+.thumbnail {
+  padding: 0;
+  border-radius: 0;
+  margin-bottom: 40px;
+}
+
+.caption {
+  background-color: whitesmoke;
+}
+
+.caption h3, p {
+  margin: 15px 5% 25px 5%;
 }
 
 .copyright p {
@@ -122,4 +141,58 @@ body {
 #main-nav li a:hover {
   color: #000;
   text-decoration: none;
+}
+
+#sidebars {
+  float: right;
+  width: 100%;
+  min-height: 630px;
+  padding: 0 0 0 20px;
+  border-left: 1px solid #ddd;
+}
+
+#headlines h2.heading, #sidebars h2.heading-blue, #sidebars h2.heading {
+  font: bold 0.8em arial,verdana,tahoma,sans-serif;
+  line-height: 1.0em;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 8px 0;
+  padding: 7px 6px 6px 6px;
+  background: #dc0000;
+}
+
+.sidebar-ads {
+  margin: 20px -15px 20px -15px;
+}
+
+#recommended {
+  float: left;
+  width: 312px;
+  height: 290px;
+  margin: 0 20px 0 0;
+  padding: 20px 0;
+}
+
+#programs {
+  float: left;
+  width: 312px;
+  height: 290px;
+  margin: 0 10px 0 0;
+  padding: 20px 0;
+}
+
+#cartoon {
+  float: left;
+  width: 312px;
+  height: 290px;
+  margin: 0 0 0 10px;
+  padding: 20px 0;
+}
+
+#extras {
+  width: 980px;
+  height: 290px;
+  margin: 0 auto;
+  border-bottom: 1px solid #ddd;
 }

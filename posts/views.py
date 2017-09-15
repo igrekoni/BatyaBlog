@@ -19,7 +19,6 @@ def mainpage(request):
     except EmptyPage:
         queryset = paginator.page(paginator.num_pages)
     context = {
-        'title': 'Mainpage',
         'postsList': queryset,
         'page_request_var': page_request_var
     }
@@ -45,7 +44,6 @@ def create(request):
 def detail(request, slug=None):
     instance = get_object_or_404(Post, slug=slug)
     context = {
-        'title': instance.title,
         'instance': instance,
     }
     return render(request, 'posts/detail.html', context)
@@ -62,7 +60,6 @@ def update(request, slug=None):
         messages.success(request, "Updated")
         return HttpResponseRedirect(instance.get_absolute_url())
     context = {
-        'title': instance.title,
         'instance': instance,
         'form': form,
     }
@@ -76,3 +73,96 @@ def delete(request, slug=None):
     instance.delete()
     messages.success(request, "Удалено")
     return redirect('posts:mainpage')
+
+
+### PAGES FUNCTIONS ###
+
+
+def childs(request):
+    queryset_list = Post.objects.all().filter(category__iexact='Дети')
+    paginator = Paginator(queryset_list, 5)
+    page_request_var = 'page'
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        queryset = paginator.page(paginator.num_pages)
+    context = {
+        'postsList': queryset,
+        'page_request_var': page_request_var
+    }
+    return render(request, 'pages/childs.html', context)
+
+
+def things(request):
+    queryset_list = Post.objects.all().filter(category__iexact='Вещи')
+    paginator = Paginator(queryset_list, 5)
+    page_request_var = 'page'
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        queryset = paginator.page(paginator.num_pages)
+    context = {
+        'postsList': queryset,
+        'page_request_var': page_request_var
+    }
+    return render(request, 'pages/things.html', context)
+
+
+def dosug(request):
+    queryset_list = Post.objects.all().filter(category__iexact='Досуг')
+    paginator = Paginator(queryset_list, 5)
+    page_request_var = 'page'
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        queryset = paginator.page(paginator.num_pages)
+    context = {
+        'postsList': queryset,
+        'page_request_var': page_request_var
+    }
+    return render(request, 'pages/dosug.html', context)
+
+
+def travel(request):
+    queryset_list = Post.objects.all().filter(category__iexact='Путешествия')
+    paginator = Paginator(queryset_list, 5)
+    page_request_var = 'page'
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        queryset = paginator.page(paginator.num_pages)
+    context = {
+        'postsList': queryset,
+        'page_request_var': page_request_var
+    }
+    return render(request, 'pages/travel.html', context)
+
+
+def humor(request):
+    queryset_list = Post.objects.all().filter(category__iexact='Юмор')
+    paginator = Paginator(queryset_list, 5)
+    page_request_var = 'page'
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        queryset = paginator.page(paginator.num_pages)
+    context = {
+        'postsList': queryset,
+        'page_request_var': page_request_var
+    }
+    return render(request, 'pages/humor.html', context)
