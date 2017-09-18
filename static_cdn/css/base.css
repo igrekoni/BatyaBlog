@@ -62,14 +62,14 @@ body {
 
 #top li {
   display: inline;
-  font-size: 0.9em;
+  font-size: 1.1em;
   line-height: 1.0em;
   margin: 0 0 0 20px;
   padding: 0;
 }
 
 #top li a {
-  color: #dc0000;
+  color: #363d6b;
   text-decoration: none;
 }
 
@@ -103,7 +103,7 @@ body {
   width: 980px;
   height: 44px;
   margin: 0 auto;
-  background: #dc0000;
+  background: #363d6b;
 }
 
 #main-nav ul {
@@ -152,7 +152,7 @@ body {
   color: #fff;
   margin: 0 0 8px 0;
   padding: 7px 6px 6px 6px;
-  background: #dc0000;
+  background: #363d6b;
 }
 
 .sidebar-ads {
