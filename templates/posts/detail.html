@@ -6,11 +6,12 @@
 {% block content %}
     <div class="col-sm-12 news-list news-detail">
         <h1>{{ instance.title }}</h1>
-        <small>Добавил: {{ instance.user }}, Категория: {{ instance.category }},{% if instance.draft %} <span style="color: red">Черновик</span>{% endif %} {{ instance.publish }}</small><hr>
         {% if instance.image %}
         <img src="{{ instance.image.url }}" alt="{{ instance.title }}" class="img-responsive" />
         {% endif %}
         <br>
+        <small>{{ instance.user }}, {{ instance.publish }}, {{ instance.category }}{% if instance.draft %}, <span style="color: red">Черновик</span>{% endif %}</small>
+        <hr>
         {{ instance.fullText|linebreaks }}<br>
     </div>
 {% endblock content %}

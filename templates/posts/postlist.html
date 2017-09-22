@@ -7,11 +7,12 @@
             <div class="col-sm-12 news-list">
                 <div class="thumbnail">
                     {% if obj.image %}
-                        <img src="{{ obj.image.url }}" alt="{{ obj.title }}" class="img-responsive">
+                        <a href="{{ obj.get_absolute_url }}"><img src="{{ obj.image.url }}" alt="{{ obj.title }}" class="img-responsive"></a>
                     {% endif %}
                     <div class="caption">
-                        <h3><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <small>{{ obj.publish|timesince }}</small></h3>
+                        <h3><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></h3>
                         <p>{{ obj.previewText|linebreaks|truncatechars:120 }}</p>
+                        <p><small>{{ obj.user }}, {{ obj.publish|date:"d.m.Y" }}, {{ obj.category }}</small></p>
                     </div>
                 </div>
             </div>

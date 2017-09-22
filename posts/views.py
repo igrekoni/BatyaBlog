@@ -75,7 +75,9 @@ def delete(request, slug=None):
     return redirect('posts:mainpage')
 
 
-### PAGES FUNCTIONS ###
+#
+#              PAGES FUNCTIONS
+#
 
 
 def childs(request):
