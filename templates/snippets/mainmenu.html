@@ -1,15 +1,29 @@
-<div class="container">
-    <div class="row">
-    <!-- BEGIN NAV -->
-        <div id="main-nav">
-            <ul>
-                <li><a href="{% url 'posts:mainpage' %}" title="Главная">Главная</a></li>
-                <li><a href="{% url 'posts:childs' %}" title="Дети">Дети</a></li>
-                <li><a href="{% url 'posts:things' %}" title="Вещи">Вещи</a></li>
-                <li><a href="{% url 'posts:dosug' %}" title="Досуг">Досуг</a></li>
-                <li><a href="{% url 'posts:travel' %}" title="Путешествия">Путешествия</a></li>
-                <li><a href="{% url 'posts:humor' %}" title="Юмор">Юмор</a></li>
-            </ul>
-        </div>
+<div class="category-nav">
+    <div id="mega-menu" class="mega-menu">
+        <ul>
+            <li id="life-style" class="mega-menu-li life-style"><a href="{% url 'posts:mainpage' %}" title="Главная">Главная</a></li>
+            <li id="travel" class="mega-menu-li travel"><a href="{% url 'posts:childs' %}" title="Дети">Дети</a></li>
+            <li id="coding" class="mega-menu-li coding"><a href="{% url 'posts:things' %}" title="Вещи">Вещи</a></li>
+            <li id="music" class="mega-menu-li music"><a href="{% url 'posts:dosug' %}" title="Досуг">Досуг</a></li>
+            <li id="sports" class="mega-menu-li sports"><a href="{% url 'posts:travel' %}" title="Путешествия">Путешествия</a></li>
+            <li id="design" class="mega-menu-li design"><a href="{% url 'posts:humor' %}" title="Юмор">Юмор</a></li>
+        </ul>
     </div>
 </div>
+
+
+{#<div class="container">#}
+{#    <div class="row">#}
+{#    <!-- BEGIN NAV -->#}
+{#        <div id="main-nav">#}
+{#            <ul>#}
+{#                <li><a href="{% url 'posts:mainpage' %}" title="Главная">Главная</a></li>#}
+{#                <li><a href="{% url 'posts:childs' %}" title="Дети">Дети</a></li>#}
+{#                <li><a href="{% url 'posts:things' %}" title="Вещи">Вещи</a></li>#}
+{#                <li><a href="{% url 'posts:dosug' %}" title="Досуг">Досуг</a></li>#}
+{#                <li><a href="{% url 'posts:travel' %}" title="Путешествия">Путешествия</a></li>#}
+{#                <li><a href="{% url 'posts:humor' %}" title="Юмор">Юмор</a></li>#}
+{#            </ul>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}

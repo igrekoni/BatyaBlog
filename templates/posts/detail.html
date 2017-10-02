@@ -1,17 +1,121 @@
 {% extends "index.html" %}
+{% load static %}
 
 {% block description %}{{ instance.previewText }}{% endblock description %}
 {% block title %}БатяБлог - {{ instance.title }}{% endblock title %}
 
+<div class="row">
 {% block content %}
-    <div class="col-sm-12 news-list news-detail">
-        <h1>{{ instance.title }}</h1>
+{#    <div class="col-sm-12 news-list news-detail">#}
+{#        <h1>{{ instance.title }}</h1>#}
+{#        {% if instance.image %}#}
+{#        <img src="{{ instance.image.url }}" alt="{{ instance.title }}" class="img-responsive" />#}
+{#        {% endif %}#}
+{#        <br>#}
+{#        <small>{{ instance.user }}, {{ instance.publish }}, {{ instance.category }}{% if instance.draft %}, <span style="color: red">Черновик</span>{% endif %}</small>#}
+{#        <hr>#}
+{#        {{ instance.fullText|linebreaks }}<br>#}
+{#    </div>#}
+
+<div class="col-md-12 w-100">
+    <div class="single-post">
+
+    <!-- ___Start Article & Feature___ -->
+    <div class="article-and-feature post-bottom-content bg-box-shadow each-section" data-scroll-index="0">
+        <h3>{{ instance.title }} <span class="mobile-bg">9<a class="mobile-bg" href="#">9 комментариев</a></span></h3>
+        <div class="meta-info">
+            <p class="date"><i class="fa fa-clock-o"></i><a href="#">{{ instance.publish }}</a></p>
+            <p class="category"><i class="fa fa-bookmark"></i>  <a href="#">{{ instance.category }}</a> </p>
+            <p class="author"><i class="fa fa-user"></i> <a href="#">by {{ instance.user }}</a></p>
+            {% if instance.draft %}
+                <p class="author"><i class="fa fa-user"></i><span style="color: red">Черновик</span></p>
+            {% endif %}
+        </div>
+
         {% if instance.image %}
-        <img src="{{ instance.image.url }}" alt="{{ instance.title }}" class="img-responsive" />
+            <img src="{{ instance.image.url }}" alt="{{ instance.title }}" class="img-responsive" />
         {% endif %}
-        <br>
-        <small>{{ instance.user }}, {{ instance.publish }}, {{ instance.category }}{% if instance.draft %}, <span style="color: red">Черновик</span>{% endif %}</small>
-        <hr>
-        {{ instance.fullText|linebreaks }}<br>
+
+        <div class="article-content">
+            <p>{{ instance.fullText|linebreaks }}</p><br>
+        </div>
+
+        <!-- ___Start Post Meta___ -->
+        <div class="post-meta">
+            <div class="share-icon">
+                <i class="fa fa-share-alt"></i>
+                <span>25 Share</span>
+            </div>
+
+            <div class="tags text-right">
+                <ul class="tag-mobile">
+                    <li><a href="#0">Tags :</a></li>
+                    <li><a href="#0">nexus</a></li>
+                    <li><a href="#0">mobile</a></li>
+                    <li><a href="#0">android</a></li>
+                    <li><a href="#0">games</a></li>
+                    <li><a href="#0">responsive</a></li>
+                </ul>
+            </div><!-- End Tags -->
+        </div><!-- End Meta Post -->
+    </div><!-- End Article & Feature -->
+</div>
+
+
+
+
+<!-- Информация об авторе -->
+    <div data-scroll-index="3" class="each-section single-post-author common-border">
+        <div class="row">
+            <div class="col-lg-2 post-author-left">
+                <img src="{% static 'images/default-user.png' %}" alt="">
+            </div>
+            <div class="col-lg-10 post-author-right">
+                <h4>{{ instance.user.get_full_name }}</h4>
+                <p class="author-bio">Phasellus dapibus ac quam placerat tincidunt. Praesent laoreet mattis odio ut hendrerit.
+                Maecenas venenatis tristique vehicula. Sed faucibus ipsum.</p>
+                <a href="#0" class="view-my-articles"><i class="fa fa-heart"></i>view my article</a>
+            </div>
+        </div><!-- End Row -->
     </div>
+
+
+<!-- Добавить Комментарий -->
+    <div data-scroll-index="5" class="each-section leave-a-comment">
+    <h3>leave a comment</h3>
+    <div class="comment-form common-border">
+        <div class="row">
+            <form>
+                <!-- ___Send Name Email Website___ -->
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="web">Website</label>
+                        <input type="text" name="web" id="web" class="form-control">
+                    </div>
+                </div>
+
+                <!-- ___Send Message___ -->
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea name="message" id="message" rows="7" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="button" type="submit">Send Message</button>
+                    </div>
+                </div>
+            </form><!-- End Form -->
+        </div><!-- End Row -->
+    </div><!-- End Contact Form -->
+    </div></div>
 {% endblock content %}
