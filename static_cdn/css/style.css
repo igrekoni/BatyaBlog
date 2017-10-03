@@ -62,6 +62,9 @@ a {
   -o-transition-property: background-color, color;
   transition-property: background-color, color;
 }
+h3 a {
+  color: #f1c40f !important;
+}
 a:active,
 a:hover,
 a:focus,
