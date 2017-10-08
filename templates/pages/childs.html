@@ -10,9 +10,9 @@
                 <div class="article-and-feature post-bottom-content one-full-post">
                     <h3><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <span class="mobile-bg">9<a class="mobile-bg" href="#0">9 комментов</a></span></h3>
                     <div class="meta-info">
-                        <p class="date"><i class="fa fa-clock-o"></i>{{ obj.publish|date:"F d, Y" }}</p>
-                        <p class="category"><i class="fa fa-bookmark"></i>  <a href="#0">{{ obj.category }}</a> </p>
-                        <p class="author"><i class="fa fa-user"></i> <a href="#0">by {{ obj.user }}</a></p>
+                        <p class="date"><i class="icon-clock"></i>{{ obj.publish|date:"F d, Y" }}</p>
+                        <p class="category"><i class="icon-bookmark"></i>  <a href="#0">{{ obj.category }}</a> </p>
+                        <p class="author"><i class="icon-user"></i> <a href="#0">by {{ obj.user }}</a></p>
                     </div>
                     <a href="{{ obj.get_absolute_url }}"><img src="{{ obj.image.url }}" alt="{{ obj.title }}" class="img-responsive"></a>
                     <div class="single-post-content">

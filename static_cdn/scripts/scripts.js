@@ -5,25 +5,6 @@
    		var $this = $(window);
 		
 
-/* ================================
-===   Trending Post Slider   ====
-=================================== */
-        $("#trend-post").owlCarousel({
-            pagination : false
-        });
-
-
-
-/* ================================
-===         Main Slider        ====
-=================================== */
-
-        $("#slider").owlCarousel({
-            singleItem:true
-        });
-
-
-
 /* ========================================
 ===   Top Bar SliderUp and SlideDown   ====
 =========================================== */
@@ -127,24 +108,6 @@
 
 
 
-
-/* ================================
-===         Single Post Slider        ====
-=================================== */
-
-    $("#single-post-slider").owlCarousel({
-        singleItem:true,
-        pagination : false,
-        navigation : true,
-        rewindNav : true,
-        slideSpeed : 800,
-        paginationSpeed : 1600,
-        rewindSpeed : 400,
-        navigationText: [
-          "<i class='fa fa-arrow-left'></i>",
-          "<i class='fa fa-arrow-right'></i>"
-          ]
-    });
 
 /* ================================
 ===         Tooltip      ====
