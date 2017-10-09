@@ -2,13 +2,22 @@ from django.http import Http404, HttpResponseRedirect
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.db.models import Q
 from .models import Post
 from .forms import PostForm
 
 
 def mainpage(request):
     queryset_list = Post.objects.all()
+    query = request.GET.get('q')
+    if query:
+        queryset_list = queryset_list.filter(
+            Q(title__icontains=query) |
+            Q(fullText__icontains=query) |
+            Q(previewText__icontains=query) |
+            Q(user__first_name__icontains=query) |
+            Q(user__last_name__icontains=query)
+            ).distinct()
     paginator = Paginator(queryset_list, 5)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)

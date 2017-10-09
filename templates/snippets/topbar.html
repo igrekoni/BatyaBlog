@@ -18,8 +18,8 @@
     <div class="top-bar-body">
         <div class="search-body targetDiv" id="div1">
             <p>Поиск</p>
-            <form>
-                <input type="text" class="form-control no-radius" placeholder="Введите фразу для поиска">
+            <form method="get" action="">
+                <input type="text" name="q" class="form-control no-radius" placeholder="Введите фразу для поиска" value="{{ request.GET.q }}">
             </form>
         </div>
 
