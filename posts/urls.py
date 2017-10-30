@@ -12,6 +12,7 @@ from .views import (
         dosug,
         travel,
         humor,
+        TagListView,
     )
 
 
@@ -26,6 +27,7 @@ urlpatterns = [
     url(r'^(?P<slug>[\w-]+)/$', detail, name='detail'),
     url(r'^(?P<slug>[\w-]+)/edit/$', update, name='update'),
     url(r'^(?P<slug>[\w-]+)/delete/$', delete),
+    url(r'^tag/(?P<slug>[\w-]+)/$', TagListView.as_view(), name='tagged'),
 
 
 

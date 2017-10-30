@@ -5,6 +5,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from .models import Post
 from .forms import PostForm
+from django.views.generic import ListView
 
 
 def mainpage(request):
@@ -37,13 +38,16 @@ def mainpage(request):
 def create(request):
     if not request.user.is_staff or not request.user.is_superuser:
         raise Http404
+
     form = PostForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.user = request.user
-        instance.save()
-        messages.success(request, "Created")
-        return HttpResponseRedirect(instance.get_absolute_url())
+    if request.method == 'POST':
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            form.save_m2m()
+            messages.success(request, "Created")
+            return HttpResponseRedirect(instance.get_absolute_url())
     context = {
         'form': form,
     }
@@ -177,3 +181,15 @@ def humor(request):
         'page_request_var': page_request_var
     }
     return render(request, 'pages/humor.html', context)
+
+
+class TagListView(ListView):
+    template_name = "index.html"
+
+    def get_queryset(self):
+        return Post.objects.filter(tags__slug=self.kwargs.get("slug")).all()
+
+    def get_context_data(self, **kwargs):
+        context = super(TagListView, self).get_context_data(**kwargs)
+        context["tag"] = self.kwargs.get("slug")
+        return context
