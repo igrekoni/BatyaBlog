@@ -1,62 +1,53 @@
 {% extends "index.html" %}
 {% load static %}
 
-{% block description %}{{ instance.previewText }}{% endblock description %}
-{% block title %}ПапаБлог - {{ instance.title }}{% endblock title %}
+{% block description %}{{ object.previewText }}{% endblock description %}
+{% block title %}ПапаБлог - {{ object.title }}{% endblock title %}
 
 <div class="row">
 {% block content %}
-{#    <div class="col-sm-12 news-list news-detail">#}
-{#        <h1>{{ instance.title }}</h1>#}
-{#        {% if instance.image %}#}
-{#        <img src="{{ instance.image.url }}" alt="{{ instance.title }}" class="img-responsive" />#}
-{#        {% endif %}#}
-{#        <br>#}
-{#        <small>{{ instance.user }}, {{ instance.publish }}, {{ instance.category }}{% if instance.draft %}, <span style="color: red">Черновик</span>{% endif %}</small>#}
-{#        <hr>#}
-{#        {{ instance.fullText|linebreaks }}<br>#}
-{#    </div>#}
 
 <div class="col-md-12 w-100">
     <div class="single-post">
 
     <!-- ___Start Article & Feature___ -->
-    <div class="article-and-feature post-bottom-content bg-box-shadow each-section" data-scroll-index="0">
-        <h3>{{ instance.title }} <span class="mobile-bg">9<a class="mobile-bg" href="#">9 комментариев</a></span></h3>
-        <div class="meta-info">
-            <p class="date"><i class="icon-clock"></i><a href="#">{{ instance.publish }}</a></p>
-            <p class="category"><i class="icon-bookmark"></i>  <a href="#">{{ instance.category }}</a> </p>
-            <p class="author"><i class="icon-user"></i> <a href="#">by {{ instance.user }}</a></p>
-            {% if instance.draft %}
-                <p class="author"><i class="fa fa-user"></i><span style="color: red">Черновик</span></p>
-            {% endif %}
-        </div>
-
-        {% if instance.image %}
-            <img src="{{ instance.image.url }}" alt="{{ instance.title }}" class="img-responsive" />
-        {% endif %}
-
-        <div class="article-content">
-            <p>{{ instance.fullText|linebreaks }}</p><br>
-        </div>
-
-        <!-- ___Start Post Meta___ -->
-        <div class="post-meta">
-            <div class="share-icon">
-                <i class="icon-share"></i>
-                <span>25 Share</span>
+        <div class="article-and-feature post-bottom-content bg-box-shadow each-section" data-scroll-index="0">
+            <h3>{{ object.title }} <span class="mobile-bg">9<a class="mobile-bg" href="#">9 комментариев</a></span></h3>
+            <div class="meta-info">
+                <p class="date"><i class="icon-clock"></i><a href="#">{{ object.publish }}</a></p>
+                <p class="category"><i class="icon-bookmark"></i>  <a href="#">{{ object.category }}</a> </p>
+                <p class="author"><i class="icon-user"></i> <a href="#">by {{ object.user }}</a></p>
+                {% if object.draft %}
+                    <p class="author"><i class="fa fa-user"></i><span style="color: red">Черновик</span></p>
+                {% endif %}
             </div>
 
-            <div class="tags text-right">
-                <ul class="tag-mobile">
-                    <li>Тэги: </li>
-                    {% for tag in instance.tags.all %}
-                        <li><a href="{% url "posts:tagged" tag.slug %}">{{ tag.name }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div><!-- End Tags -->
-        </div><!-- End Meta Post -->
-    </div><!-- End Article & Feature -->
+            {% if object.image %}
+                <img src="{{ object.image.url }}" alt="{{ object.title }}" class="img-responsive" />
+            {% endif %}
+
+            <div class="article-content">
+                <p>{{ object.fullText|linebreaks }}</p><br>
+            </div>
+
+            <!-- ___Start Post Meta___ -->
+            <div class="post-meta">
+                <div class="share-icon">
+                    <i class="icon-share"></i>
+                    <span>25 Share</span>
+                </div>
+
+                <div class="tags text-right">
+                    <ul class="tag-mobile">
+                        <li>Тэги: </li>
+                        {% for tag in object.tags.all %}
+                            <li><a href="{% url "posts:tagged" tag.slug %}">{{ tag.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div><!-- End Tags -->
+            </div><!-- End Meta Post -->
+        </div><!-- End Article & Feature -->
+
 </div>
 
 
@@ -69,7 +60,7 @@
                 <img src="{% static 'images/default-user.png' %}" alt="">
             </div>
             <div class="col-lg-10 post-author-right">
-                <h4>{{ instance.user.get_full_name }}</h4>
+                <h4>{{ object.user.get_full_name }}</h4>
                 <p class="author-bio">Phasellus dapibus ac quam placerat tincidunt. Praesent laoreet mattis odio ut hendrerit.
                 Maecenas venenatis tristique vehicula. Sed faucibus ipsum.</p>
                 <a href="#0" class="view-my-articles"><i class="fa fa-heart"></i>Все статьи автора</a>

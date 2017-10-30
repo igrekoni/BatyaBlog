@@ -1,65 +1,38 @@
 from django.http import Http404, HttpResponseRedirect
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from .models import Post
 from .forms import PostForm
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView, CreateView
 
 
-def mainpage(request):
-    queryset_list = Post.objects.all()
-    query = request.GET.get('q')
-    if query:
-        queryset_list = queryset_list.filter(
-            Q(title__icontains=query) |
-            Q(fullText__icontains=query) |
-            Q(previewText__icontains=query) |
-            Q(user__first_name__icontains=query) |
-            Q(user__last_name__icontains=query)
-            ).distinct()
-    paginator = Paginator(queryset_list, 5)
-    page_request_var = 'page'
-    page = request.GET.get(page_request_var)
-    try:
-        queryset = paginator.page(page)
-    except PageNotAnInteger:
-        queryset = paginator.page(1)
-    except EmptyPage:
-        queryset = paginator.page(paginator.num_pages)
-    context = {
-        'postsList': queryset,
-        'page_request_var': page_request_var
-    }
-    return render(request, 'posts/postlist.html', context)
+class Mainpage(ListView):
+    template_name = "posts/postlist.html"
+    paginate_by = "3"
+
+    def get_queryset(self):
+        return Post.objects.all()
 
 
-def create(request):
-    if not request.user.is_staff or not request.user.is_superuser:
-        raise Http404
-
-    form = PostForm(request.POST or None, request.FILES or None)
-    if request.method == 'POST':
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
-            form.save_m2m()
-            messages.success(request, "Created")
-            return HttpResponseRedirect(instance.get_absolute_url())
-    context = {
-        'form': form,
-    }
-    return render(request, 'posts/create.html', context)
+class Create(CreateView):
+    template_name = 'posts/create.html'
+    model = Post
+    fields = [
+        'title',
+        'image',
+        'previewText',
+        'fullText',
+        'category',
+        'tags',
+        'draft',
+        'publish',
+    ]
 
 
-def detail(request, slug=None):
-    instance = get_object_or_404(Post, slug=slug)
-    context = {
-        'instance': instance,
-    }
-    return render(request, 'posts/detail.html', context)
+class Detail(DetailView):
+    template_name = 'posts/detail.html'
+    model = Post
 
 
 def update(request, slug=None):
@@ -89,102 +62,53 @@ def delete(request, slug=None):
 
 
 #
-#              PAGES FUNCTIONS
+#              PAGES CLASSES
 #
 
 
-def childs(request):
-    queryset_list = Post.objects.all().filter(category__iexact='Дети')
-    paginator = Paginator(queryset_list, 5)
-    page_request_var = 'page'
-    page = request.GET.get(page_request_var)
-    try:
-        queryset = paginator.page(page)
-    except PageNotAnInteger:
-        queryset = paginator.page(1)
-    except EmptyPage:
-        queryset = paginator.page(paginator.num_pages)
-    context = {
-        'postsList': queryset,
-        'page_request_var': page_request_var
-    }
-    return render(request, 'pages/childs.html', context)
+class Childs(ListView):
+    template_name = "posts/postlist.html"
+    paginate_by = "3"
+
+    def get_queryset(self):
+        return Post.objects.all().filter(category__iexact='Дети')
 
 
-def things(request):
-    queryset_list = Post.objects.all().filter(category__iexact='Вещи')
-    paginator = Paginator(queryset_list, 5)
-    page_request_var = 'page'
-    page = request.GET.get(page_request_var)
-    try:
-        queryset = paginator.page(page)
-    except PageNotAnInteger:
-        queryset = paginator.page(1)
-    except EmptyPage:
-        queryset = paginator.page(paginator.num_pages)
-    context = {
-        'postsList': queryset,
-        'page_request_var': page_request_var
-    }
-    return render(request, 'pages/things.html', context)
+class Things(ListView):
+    template_name = "posts/postlist.html"
+    paginate_by = "3"
+
+    def get_queryset(self):
+        return Post.objects.all().filter(category__iexact='Вещи')
 
 
-def dosug(request):
-    queryset_list = Post.objects.all().filter(category__iexact='Досуг')
-    paginator = Paginator(queryset_list, 5)
-    page_request_var = 'page'
-    page = request.GET.get(page_request_var)
-    try:
-        queryset = paginator.page(page)
-    except PageNotAnInteger:
-        queryset = paginator.page(1)
-    except EmptyPage:
-        queryset = paginator.page(paginator.num_pages)
-    context = {
-        'postsList': queryset,
-        'page_request_var': page_request_var
-    }
-    return render(request, 'pages/dosug.html', context)
+class Dosug(ListView):
+    template_name = "posts/postlist.html"
+    paginate_by = "3"
+
+    def get_queryset(self):
+        return Post.objects.all().filter(category__iexact='Досуг')
 
 
-def travel(request):
-    queryset_list = Post.objects.all().filter(category__iexact='Путешествия')
-    paginator = Paginator(queryset_list, 5)
-    page_request_var = 'page'
-    page = request.GET.get(page_request_var)
-    try:
-        queryset = paginator.page(page)
-    except PageNotAnInteger:
-        queryset = paginator.page(1)
-    except EmptyPage:
-        queryset = paginator.page(paginator.num_pages)
-    context = {
-        'postsList': queryset,
-        'page_request_var': page_request_var
-    }
-    return render(request, 'pages/travel.html', context)
+class Travel(ListView):
+    template_name = "posts/postlist.html"
+    paginate_by = "3"
+
+    def get_queryset(self):
+        return Post.objects.all().filter(category__iexact='Путешествия')
 
 
-def humor(request):
-    queryset_list = Post.objects.all().filter(category__iexact='Юмор')
-    paginator = Paginator(queryset_list, 5)
-    page_request_var = 'page'
-    page = request.GET.get(page_request_var)
-    try:
-        queryset = paginator.page(page)
-    except PageNotAnInteger:
-        queryset = paginator.page(1)
-    except EmptyPage:
-        queryset = paginator.page(paginator.num_pages)
-    context = {
-        'postsList': queryset,
-        'page_request_var': page_request_var
-    }
-    return render(request, 'pages/humor.html', context)
+class Humor(ListView):
+    template_name = "posts/postlist.html"
+    paginate_by = "3"
+
+    def get_queryset(self):
+        return Post.objects.all().filter(category__iexact='Юмор')
 
 
 class TagListView(ListView):
-    template_name = "index.html"
+    template_name = "posts/postlist.html"
+    paginate_by = "3"
 
     def get_queryset(self):
         return Post.objects.filter(tags__slug=self.kwargs.get("slug")).all()
@@ -193,3 +117,16 @@ class TagListView(ListView):
         context = super(TagListView, self).get_context_data(**kwargs)
         context["tag"] = self.kwargs.get("slug")
         return context
+
+
+# class CategoryListView(ListView):
+#     template_name = "posts/postlist.html"
+#     paginate_by = "3"
+#
+#     def get_queryset(self):
+#         return Post.objects.filter(category=self).all()
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(CategoryListView, self).get_context_data(**kwargs)
+#         context["category"] = self.kwargs.get("category")
+#         return context

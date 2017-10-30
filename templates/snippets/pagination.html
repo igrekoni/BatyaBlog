@@ -1,15 +1,13 @@
-<div class="pagination">
-    <span class="step-links">
-        {% if postsList.has_previous %}
-            <a href="?{{ page_request_var }}={{ postsList.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Назад</a>
+{% if is_paginated %}
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <span><a href="?page={{ page_obj.previous_page_number }}">Назад</a></span>
         {% endif %}
-
         <span class="current">
-            Страница {{ postsList.number }} из {{ postsList.paginator.num_pages }}
+            <span>Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.</span>
         </span>
-
-        {% if postsList.has_next %}
-            <a href="?{{ page_request_var }}={{ postsList.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Вперёд</a>
+        {% if page_obj.has_next %}
+            <span><a href="?page={{ page_obj.next_page_number }}">Вперёд</a></span>
         {% endif %}
-    </span>
-</div>
+    </div>
+{% endif %}
