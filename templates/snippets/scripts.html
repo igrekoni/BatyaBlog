@@ -3,5 +3,17 @@
 <script src="{% static 'scripts/scripts.js' %}"></script>				<!-- ===This Script for Custom Script=== -->
 <script src="{% static 'scripts/bootstrap.min.js' %}"></script>
 <script src="{% static 'scripts/wow.min.js' %}"></script>				<!-- ===This Script for Wow JS=== -->
-<script src="{% static "scripts/jquery.meanmenu.min.js" %}"></script>		<!-- ===This Script for Main Menu=== -->
+<script src="{% static "scripts/jquery.meanmenu.min.js" %}"></script>
+<script src="{% static "scripts/marked.min.js" %}"></script>		<!-- ===This Script for Main Menu=== -->
 <script src="{% static "scripts/jquery.jscroll.js" %}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".content-markdown").each(function () {
+            var content = $(this).text();
+            console.log(content);
+            var markedContent = marked(content);
+            $(this).html(markedContent);
+        });
+    });
+</script>
