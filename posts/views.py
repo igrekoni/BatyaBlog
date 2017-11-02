@@ -15,19 +15,35 @@ class Mainpage(ListView):
         return Post.objects.all()
 
 
-class Create(CreateView):
-    template_name = 'posts/create.html'
-    model = Post
-    fields = [
-        'title',
-        'image',
-        'previewText',
-        'fullText',
-        'category',
-        'tags',
-        'draft',
-        'publish',
-    ]
+# class Create(CreateView):
+#     template_name = 'posts/create.html'
+#     model = Post
+#     fields = [
+#         'title',
+#         'image',
+#         'previewText',
+#         'fullText',
+#         'category',
+#         'tags',
+#         'draft',
+#         'publish',
+#     ]
+
+
+def create(request):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
+    form = PostForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.user = request.user
+        instance.save()
+        messages.success(request, "Created")
+        return HttpResponseRedirect(instance.get_absolute_url())
+    context = {
+        'form': form,
+    }
+    return render(request, 'posts/create.html', context)
 
 
 class Detail(DetailView):

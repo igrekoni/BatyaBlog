@@ -3,7 +3,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .views import (
         Mainpage,
-        Create,
+        create,
         Detail,
         update,
         delete,
@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^dosug/$', Dosug.as_view(), name='dosug'),
     url(r'^travel/$', Travel.as_view(), name='travel'),
     url(r'^humor/$', Humor.as_view(), name='humor'),
-    url(r'^create/$', Create.as_view()),
+    url(r'^create/$', create, name='create'),
     url(r'^(?P<slug>[\w-]+)/$', Detail.as_view(), name='detail'),
     url(r'^(?P<slug>[\w-]+)/edit/$', update, name='update'),
     url(r'^(?P<slug>[\w-]+)/delete/$', delete),

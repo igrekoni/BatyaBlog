@@ -2,6 +2,10 @@
 
 {% block title %}ПапаБлог - Добавить запись{% endblock title %}
 
+{% block head_extra %}
+    {{ form.media }}
+{% endblock head_extra %}
+
 {% block content %}
 <div class="col-sm-12">
     <form method="POST" action="" enctype="multipart/form-data">

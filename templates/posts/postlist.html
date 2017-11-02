@@ -17,7 +17,7 @@
                     <a href="{{ obj.get_absolute_url }}"><img src="{{ obj.image.url }}" alt="{{ obj.title }}" class="img-responsive"></a>
                 {% endif %}
                 <div class="single-post-content">
-                    <p>{{ obj.previewText|linebreaks }}</p>
+                    <div class="content-markdown">{{ obj.previewText }}</div>
                 <a class="mobile-color" href="{{ obj.get_absolute_url }}"> Читать дальше <i class="fa fa-arrow-right"></i> </a>
                 </div>
             </div>
