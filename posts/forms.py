@@ -4,8 +4,8 @@ from pagedown.widgets import PagedownWidget
 
 
 class PostForm(forms.ModelForm):
-    previewText = forms.CharField(widget=PagedownWidget)
-    fullText = forms.CharField(widget=PagedownWidget)
+    previewText = forms.CharField(widget=PagedownWidget(show_preview=False))
+    fullText = forms.CharField(widget=PagedownWidget(show_preview=False))
     publish = forms.DateField(widget=forms.SelectDateWidget)
 
     class Meta:

@@ -6,13 +6,40 @@
     {{ form.media }}
 {% endblock head_extra %}
 
+{% block sidebar %}{% endblock sidebar %}
+
 {% block content %}
-<div class="col-sm-12">
-    <form method="POST" action="" enctype="multipart/form-data">
+<div class="col-sm-6">
+    <p>Редактор</p>
+    <form method="POST" id="post-form" action="" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <br>
         <input type="submit" class="btn btn-default" value="Добавить" />
     </form>
 </div>
+<div class="col-sm-6">
+    <p>Превью</p>
+    <h3 id="preview-title"></h3>
+    <p id="preview-image"></p>
+    <p id="preview-preview"></p>
+    <p id="preview-full"></p>
+</div>
 {% endblock content %}
+
+{% block script %}
+    <script type="text/javascript">
+        var titleItem = $("#id_title");
+        $("#preview-title").html(marked(titleItem.val()));
+
+        var imageItem = $("post-form>p>a").val();
+        console.log(imageItem);
+{#        $("#preview-image").html(marked(imageItem.val()));#}
+
+        var previewItem = $("#id_previewText");
+        $("#preview-preview").html(marked(previewItem.val()));
+
+        var fullItem = $("#id_fullText");
+        $("#preview-full").html(marked(fullItem.val()));
+    </script>
+{% endblock script %}
