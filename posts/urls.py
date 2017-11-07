@@ -7,11 +7,10 @@ from .views import (
         Detail,
         update,
         delete,
-        Childs,
+        Health,
         Things,
         Dosug,
-        Travel,
-        Humor,
+        Growth,
         TagListView,
         # CategoryListView,
     )
@@ -19,11 +18,10 @@ from .views import (
 
 urlpatterns = [
     url(r'^$', Mainpage.as_view(), name='mainpage'),
-    url(r'^childs/$', Childs.as_view(), name='childs'),
+    url(r'^health/$', Health.as_view(), name='health'),
+    url(r'^growth/$', Growth.as_view(), name='growth'),
     url(r'^things/$', Things.as_view(), name='things'),
     url(r'^dosug/$', Dosug.as_view(), name='dosug'),
-    url(r'^travel/$', Travel.as_view(), name='travel'),
-    url(r'^humor/$', Humor.as_view(), name='humor'),
     url(r'^create/$', create, name='create'),
     url(r'^(?P<slug>[\w-]+)/$', Detail.as_view(), name='detail'),
     url(r'^(?P<slug>[\w-]+)/edit/$', update, name='update'),

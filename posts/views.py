@@ -15,21 +15,6 @@ class Mainpage(ListView):
         return Post.objects.all()
 
 
-# class Create(CreateView):
-#     template_name = 'posts/create.html'
-#     model = Post
-#     fields = [
-#         'title',
-#         'image',
-#         'previewText',
-#         'fullText',
-#         'category',
-#         'tags',
-#         'draft',
-#         'publish',
-#     ]
-
-
 def create(request):
     if not request.user.is_staff or not request.user.is_superuser:
         raise Http404
@@ -82,12 +67,12 @@ def delete(request, slug=None):
 #
 
 
-class Childs(ListView):
+class Health(ListView):
     template_name = "posts/postlist.html"
     paginate_by = "3"
 
     def get_queryset(self):
-        return Post.objects.all().filter(category__iexact='Дети')
+        return Post.objects.all().filter(category__iexact='Здоровье')
 
 
 class Things(ListView):
@@ -106,20 +91,12 @@ class Dosug(ListView):
         return Post.objects.all().filter(category__iexact='Досуг')
 
 
-class Travel(ListView):
+class Growth(ListView):
     template_name = "posts/postlist.html"
     paginate_by = "3"
 
     def get_queryset(self):
-        return Post.objects.all().filter(category__iexact='Путешествия')
-
-
-class Humor(ListView):
-    template_name = "posts/postlist.html"
-    paginate_by = "3"
-
-    def get_queryset(self):
-        return Post.objects.all().filter(category__iexact='Юмор')
+        return Post.objects.all().filter(category__iexact='Развитие')
 
 
 class TagListView(ListView):

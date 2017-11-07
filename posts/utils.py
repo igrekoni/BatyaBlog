@@ -2,16 +2,14 @@
 
 
 def categories():
-    CH = u'Дети'
+    CH = u'Здоровье'
+    TR = u'Развитие'
     TH = u'Вещи'
     DS = u'Досуг'
-    TR = u'Путешествия'
-    HM = u'Юмор'
     CATEGORY_CHOICES = (
-        (CH, u'Дети'),
+        (CH, u'Здоровье'),
+        (TR, u'Развитие'),
         (TH, u'Вещи'),
         (DS, u'Досуг'),
-        (TR, u'Путешествия'),
-        (HM, u'Юмор'),
     )
     return CATEGORY_CHOICES

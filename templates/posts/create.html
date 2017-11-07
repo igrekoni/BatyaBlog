@@ -21,7 +21,7 @@
 <div class="col-sm-6">
     <p>Превью</p>
     <h3 id="preview-title"></h3>
-    <p id="preview-image"></p>
+    <img id="preview-image" src="" />
     <p id="preview-preview"></p>
     <p id="preview-full"></p>
 </div>
@@ -29,17 +29,54 @@
 
 {% block script %}
     <script type="text/javascript">
-        var titleItem = $("#id_title");
-        $("#preview-title").html(marked(titleItem.val()));
+        $(document).ready(function () {
+            $(".col-md-9").each(function () {
+               $(this).addClass("col-md-12");
+               $(this).removeClass("col-md-9");
+            });
+        });
 
-        var imageItem = $("post-form>p>a").val();
-        console.log(imageItem);
-{#        $("#preview-image").html(marked(imageItem.val()));#}
+{#        var titleItem = $("#id_title");#}
+{#        $("#preview-title").html(marked(titleItem.val()));#}
 
-        var previewItem = $("#id_previewText");
-        $("#preview-preview").html(marked(previewItem.val()));
+        var imageItem = $("label[for='id_image']").next().attr('href');
+        $("#preview-image").attr('src', imageItem);
 
-        var fullItem = $("#id_fullText");
-        $("#preview-full").html(marked(fullItem.val()));
+        var titleInput = $("#id_title");
+        var previewInput = $("#id_previewText");
+        var contentInput = $("#id_fullText");
+
+
+        function setContent(value) {
+            var markedContent = marked(value);
+            $("#preview-full").html(markedContent);
+        }
+        setContent(contentInput.val());
+        contentInput.keyup(function () {
+            var newContent = $(this).val();
+            setContent(newContent);
+        });
+
+
+        function setPreview(value) {
+            var markedContent = marked(value);
+            $("#preview-preview").html(markedContent);
+        }
+        setPreview(previewInput.val());
+        previewInput.keyup(function () {
+            var newContent = $(this).val();
+            setPreview(newContent);
+        });
+
+
+        function setTitle(value) {
+            var markedContent = marked(value);
+            $("#preview-title").html(markedContent);
+        }
+        setTitle(titleInput.val());
+        titleInput.keyup(function () {
+            var newContent = $(this).val();
+            setTitle(newContent);
+        })
     </script>
 {% endblock script %}
