@@ -17,5 +17,6 @@ class PostForm(forms.ModelForm):
             'previewText',
             'fullText',
             'category',
+            'tags',
             'publish',
         ]
