@@ -1,3 +1,4 @@
+from datetime import date
 from django import forms
 from .models import Post
 from pagedown.widgets import PagedownWidget
@@ -6,7 +7,7 @@ from pagedown.widgets import PagedownWidget
 class PostForm(forms.ModelForm):
     previewText = forms.CharField(widget=PagedownWidget(show_preview=False))
     fullText = forms.CharField(widget=PagedownWidget(show_preview=False))
-    publish = forms.DateField(widget=forms.SelectDateWidget)
+    publish = forms.DateField(widget=forms.SelectDateWidget, initial=date.today())
 
     class Meta:
         model = Post

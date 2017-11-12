@@ -23,12 +23,15 @@ def create(request):
         instance = form.save(commit=False)
         instance.user = request.user
         instance.save()
+        form.save_m2m()
         messages.success(request, "Created")
         return HttpResponseRedirect(instance.get_absolute_url())
     context = {
         'form': form,
     }
     return render(request, 'posts/create.html', context)
+# class Create(CreateView):
+#     template_name = 'posts/create.html'
 
 
 class Detail(DetailView):
@@ -44,6 +47,7 @@ def update(request, slug=None):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
+        form.save_m2m()
         messages.success(request, "Updated")
         return HttpResponseRedirect(instance.get_absolute_url())
     context = {
