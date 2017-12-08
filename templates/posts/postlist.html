@@ -13,9 +13,9 @@
                     <p class="category"><i class="icon-bookmark"></i>  <a href="#">{{ obj.category }}</a> </p>
                     <p class="author"><i class="icon-user"></i> <a href="#">by {{ obj.user }}</a></p>
                 </div>
-                {% if obj.image %}
+                {% if obj.image %}<div class="img-list">
                     <a href="{{ obj.get_absolute_url }}"><img src="{{ obj.image.url }}" alt="{{ obj.title }}" class="img-responsive"></a>
-                {% endif %}
+                {% endif %}</div>
                 <div class="single-post-content">
                     <div class="content-markdown">{{ obj.previewText }}</div>
                 <a class="mobile-color" href="{{ obj.get_absolute_url }}"> Читать дальше <i class="fa fa-arrow-right"></i> </a>

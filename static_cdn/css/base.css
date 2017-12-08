@@ -239,3 +239,8 @@ a:hover {
   margin: 0 auto;
   border-bottom: 1px solid #ddd;
 }
+
+.img-list {
+  max-height: 300px;
+  overflow-y: hidden;
+}
