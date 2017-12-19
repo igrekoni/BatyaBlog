@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     'pagedown',
     'posts',
     'taggit',
-    'profiles'
 ]
 
 MIDDLEWARE = [
