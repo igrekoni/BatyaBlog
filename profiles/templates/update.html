@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}{{ user.username }} - Страница пользователя{% endblock title %}
+
+<div class="row">
+{% block content %}
+
+<div class="col-md-12 w-100">
+    <div class="single-post">
+
+    <!-- ___Start Article & Feature___ -->
+        <div class="article-and-feature post-bottom-content bg-box-shadow each-section" data-scroll-index="0">
+            <h3>{{ user.username }}</h3>
+
+        <hr>
+            <div class="article-content">
+                <form method="post">
+                  {% csrf_token %}
+                  {{ user_form.as_p }}
+                  {{ profile_form.as_p }}
+                  <button type="submit">Сохранить изменения</button>
+                </form>
+            </div>
+
+        </div><!-- End Article & Feature -->
+    </div>
+</div>
+
+{% endblock content %}
+</div>
