@@ -16,7 +16,7 @@
             <div class="meta-info">
                 <p class="date"><i class="icon-clock"></i><a href="#">{{ object.publish }}</a></p>
                 <p class="category"><i class="icon-bookmark"></i>  <a href="#">{{ object.category }}</a> </p>
-                <p class="author"><i class="icon-user"></i> <a href="#">by {{ object.user }}</a></p>
+                <p class="author"><i class="icon-user"></i> by <a href="/user/{{ object.user }}">{{ object.user }}</a></p>
                 {% if object.draft %}
                     <p class="author"><i class="fa fa-user"></i><span style="color: red">Черновик</span></p>
                 {% endif %}
@@ -57,13 +57,12 @@
     <div data-scroll-index="3" class="each-section single-post-author common-border">
         <div class="row">
             <div class="col-lg-2 post-author-left">
-                <img src="{% static 'images/default-user.png' %}" alt="">
+                <img src="{{ object.user.profile.avatar.url }}" alt="">
             </div>
             <div class="col-lg-10 post-author-right">
                 <h4>{{ object.user.get_full_name }}</h4>
-                <p class="author-bio">Phasellus dapibus ac quam placerat tincidunt. Praesent laoreet mattis odio ut hendrerit.
-                Maecenas venenatis tristique vehicula. Sed faucibus ipsum.</p>
-                <a href="#" class="view-my-articles"><i class="fa fa-heart"></i>Все статьи автора</a>
+                <p class="author-bio">{{ object.user.profile.bio }}</p>
+                <a href="/user/{{ object.user }}" class="view-my-articles"><i class="fa fa-heart"></i>Все статьи автора</a>
             </div>
         </div><!-- End Row -->
     </div>
@@ -103,3 +102,4 @@
     </div><!-- End Contact Form -->
     </div></div>
 {% endblock content %}
+</div>

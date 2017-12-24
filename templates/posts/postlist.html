@@ -11,7 +11,7 @@
                 <div class="meta-info">
                     <p class="date"><i class="icon-clock"></i>{{ obj.publish|date:"F d, Y" }}</p>
                     <p class="category"><i class="icon-bookmark"></i>  <a href="#">{{ obj.category }}</a> </p>
-                    <p class="author"><i class="icon-user"></i> <a href="#">by {{ obj.user }}</a></p>
+                    <p class="author"><i class="icon-user"></i> by <a href="/user/{{ obj.user }}">{{ obj.user }}</a></p>
                 </div>
                 {% if obj.image %}<div class="img-list">
                     <a href="{{ obj.get_absolute_url }}"><img src="{{ obj.image.url }}" alt="{{ obj.title }}" class="img-responsive"></a>
