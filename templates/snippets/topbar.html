@@ -24,35 +24,50 @@
         </div>
 
         <!-- ___Start Top Bar Login Body___ -->
-        <div class="user-body targetDiv" id="div2">
+        {% if request.user.is_authenticated %}
+            <div class="user-body targetDiv" id="div2">
+                <div class="row">
+                    Вы уже залогинены, {{ user.username }}.
+                    <form action="/user/logout"><button type="submit" class="btn btn-default form-control no-radius">Выйти</button></form>
+                </div>
+            </div>
+        {% else %}
+            <div class="user-body targetDiv" id="div2">
             <div class="row">
+{#                <div class="col-md-6">#}
+{#                    <div class="login-account">#}
+{#                        <p>Войти</p>#}
+{#                        <form>#}
+{#                            <div class="form-group">#}
+{#                                <input type="text" class="form-control no-radius" placeholder="Имя пользователя">#}
+{#                            </div>#}
+{#                            <div class="input-group">#}
+{#                                <input type="text" class="form-control no-radius" placeholder="Пароль">#}
+{#                                <span class="input-group-btn">#}
+{#                                    <button class="btn btn-default" type="button">OK</button>#}
+{#                                </span>#}
+{#                            </div><!-- Input Group -->#}
+{#                            <div class="forgot-pass">Забыли <a href="#">пароль?</a></div>#}
+{#                        </form>#}
+{#                    </div><!-- End Login Account -->#}
+{#                </div><!-- End Column -->#}
                 <div class="col-md-6">
-                    <div class="login-account">
-                        <p>Войти</p>
-                        <form>
-                            <div class="form-group">
-                                <input type="text" class="form-control no-radius" placeholder="Имя пользователя">
-                            </div>
-                            <div class="input-group">
-                                <input type="text" class="form-control no-radius" placeholder="Пароль">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">OK</button>
-                                </span>
-                            </div><!-- Input Group -->
-                            <div class="forgot-pass">Забыли <a href="#">пароль?</a></div>
-                        </form>
-                    </div><!-- End Login Account -->
-                </div><!-- End Column -->
+                    <div class="register">
+                        <p>Уже есть аккаунт?</p>
+                        <form action="/user/login"><button type="submit" class="btn btn-default form-control no-radius">Войти</button></form>
+                    </div>
+                </div>
 
                 <div class="dashed-divider"></div>
                 <div class="col-md-6">
                     <div class="register">
                         <p>Новый пользователь?</p>
-                        <button type="submit" class="btn btn-default form-control no-radius">Регистрация</button>
+                        <form action="/user/register"><button type="submit" class="btn btn-default form-control no-radius">Зарегистрироваться</button></form>
                     </div>
                 </div><!-- End Column -->
             </div><!-- End Row -->
         </div>
+        {% endif %}
         <!-- End Top Bar Login Body -->
     </div><!-- End Top Bar Body -->
 </div>

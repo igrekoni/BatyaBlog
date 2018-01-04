@@ -5,9 +5,10 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
+    url(r'^user/', include("profiles.urls", namespace='profiles')),
     url(r'^admin/', admin.site.urls),
     url(r'^', include("posts.urls", namespace='posts')),
-    url(r'^user/', include("profiles.urls", namespace='profiles')),
+
 ]
 
 

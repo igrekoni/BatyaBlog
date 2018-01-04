@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block title %}
+    Регистрация нового пользователя - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+     <div class="login">
+
+         {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <h1>Создайте аккаунт </h1>
+
+         <form method="post" >
+             {% csrf_token %}
+             <table>
+                {{ form.as_p }}
+                 <tr>
+                    <td></td>
+                    <td><input type="submit" name="submit" value="Зарегистрироваться" /></td>
+                </tr>
+             </table>
+         </form>
+     </div>
+
+{% endblock %}
