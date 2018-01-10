@@ -19,10 +19,14 @@ class Profile(models.Model):
     bio = models.TextField(max_length=500, blank=True)
 
     def __unicode__(self):
-        return self.user
+        return self.user.username
 
     def __str__(self):
-        return str(self.user)
+        return self.user.username
+
+    def send_activation_email(self):
+        print("Activation")
+        pass
 
 
 @receiver(post_save, sender=User)
