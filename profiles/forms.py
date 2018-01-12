@@ -1,7 +1,9 @@
 from django import forms
 from django.contrib.auth import get_user_model
-
+from .utils import code_generator
 from .models import Profile
+from django.conf import settings
+from django.core.mail import send_mail
 from django.contrib.auth.models import User
 
 
@@ -25,8 +27,6 @@ User = get_user_model()
 
 
 class RegisterForm(forms.ModelForm):
-    """A form for creating new users. Includes all the required
-    fields, plus a repeated password."""
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
 
@@ -35,7 +35,6 @@ class RegisterForm(forms.ModelForm):
         fields = ('username', 'email',)
 
     def clean_password2(self):
-        # Check that the two password entries match
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
@@ -47,7 +46,18 @@ class RegisterForm(forms.ModelForm):
         user = super(RegisterForm, self).save(commit=False)
         user.set_password(self.cleaned_data["password1"])
         user.is_active = False
-        # create a new user hash for activating email.
+        user.save()
+        print("Next steps")
+
+        user.profile.activation_key = code_generator()
+
+        subject = 'Активация аккауна papablog.org'
+        from_email = settings.DEFAULT_FROM_EMAIL
+        message = 'This is my test message'
+        recipient = [self.cleaned_data.get("email")]
+        html_message = '<h1>Для завершения регистрации пройдите по ссылке: {key}</h1>'.format(key=user.profile.activation_key)
+
+        send_mail(subject, message, from_email, recipient, fail_silently=False, html_message=html_message)
 
         if commit:
             user.save()

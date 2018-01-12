@@ -11,6 +11,7 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    activation_key = models.CharField(max_length=120)
     gender = models.CharField(max_length=10, blank=True)
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
@@ -24,9 +25,9 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-    def send_activation_email(self):
-        print("Activation")
-        pass
+    # def send_activation_email(self):
+    #     print("Activation")
+    #     pass
 
 
 @receiver(post_save, sender=User)

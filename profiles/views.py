@@ -5,7 +5,6 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.http import Http404, HttpResponseRedirect
 from django.contrib.auth import get_user_model
 from .forms import ProfileForm, UserForm, RegisterForm
-from django.contrib.auth.forms import UserCreationForm
 
 
 User = get_user_model()
@@ -42,18 +41,6 @@ def profile_update(request, *args, **kwargs):
     })
 
 
-# def register(request):
-#     if request.method == 'POST':
-#         f = UserCreationForm(request.POST)
-#         if f.is_valid():
-#             f.save()
-#             messages.success(request, 'Аккаунт успешно создан, залогиньтесь')
-#             return HttpResponseRedirect('/user/login/')
-#
-#     else:
-#         f = UserCreationForm()
-#
-#     return render(request, 'registration/registration.html', {'form': f})
 class RegisterView(CreateView):
     form_class = RegisterForm
     template_name = 'registration/registration.html'
