@@ -1,12 +1,23 @@
 {% extends 'index.html' %}
 
-{% block title %}Вход{% endblock %}
+{% block title %}Вход - {{ block.super }}{% endblock %}
 
 {% block content %}
-  <h2>Вход</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Войти</button>
-  </form>
+<div class="col-md-12 w-100">
+    <div class="single-post">
+        <div class="article-and-feature post-bottom-content bg-box-shadow each-section" data-scroll-index="0">
+            <h3>Вход</h3>
+        <hr>
+            <div class="article-content">
+                <div class="login">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Войти</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

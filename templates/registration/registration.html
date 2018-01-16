@@ -5,29 +5,34 @@
 {% endblock %}
 
 {% block content %}
+<div class="col-md-12 w-100">
+    <div class="single-post">
+        <div class="article-and-feature post-bottom-content bg-box-shadow each-section" data-scroll-index="0">
+            <h3>Зарегистрируйте аккаунт</h3>
+            <hr>
+                <div class="article-content">
+                    <div class="login">
+                        {% if messages %}
+                            <ul>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
 
-     <div class="login">
-
-         {% if messages %}
-            <ul>
-                {% for message in messages %}
-                <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-
-        <h1>Создайте аккаунт </h1>
-
-         <form method="post" >
-             {% csrf_token %}
-             <table>
-                {{ form.as_p }}
-                 <tr>
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Зарегистрироваться" /></td>
-                </tr>
-             </table>
-         </form>
-     </div>
-
+                        <form method="post" >
+                            {% csrf_token %}
+                        <table>
+                            {{ form.as_p }}
+                            <tr>
+                            <td></td>
+                            <td><input type="submit" name="submit" value="Зарегистрироваться" /></td>
+                            </tr>
+                        </table>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -4,6 +4,7 @@ from django.views.generic import DetailView, CreateView
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import Http404, HttpResponseRedirect
 from django.contrib.auth import get_user_model
+from profiles.models import Profile
 from .forms import ProfileForm, UserForm, RegisterForm
 
 
@@ -45,3 +46,19 @@ class RegisterView(CreateView):
     form_class = RegisterForm
     template_name = 'registration/registration.html'
     success_url = reverse_lazy('posts:mainpage')
+
+
+def activate_user_view(request, code=None, *args, **kwargs):
+    if code:
+        qs = Profile.objects.filter(activation_key=code)
+        if qs.exists() and qs.count() == 1:
+            profile = qs.first()
+            if not profile.user.is_active:
+                user_ = profile.user
+                user_.is_active = True
+                user_.save()
+                profile.activation_key = False
+                profile.save()
+                return redirect(reverse_lazy('profiles:login'))
+    # invalid code
+    return redirect(reverse_lazy('posts:mainpage'))

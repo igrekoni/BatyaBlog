@@ -1,5 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from django.urls import reverse
+
 from .utils import code_generator
 from .models import Profile
 from django.conf import settings
@@ -51,16 +53,16 @@ class RegisterForm(forms.ModelForm):
 
         user.profile.activation_key = code_generator()
 
-        subject = 'Активация аккауна papablog.org'
+        path_ = reverse('profiles:activate', kwargs={'code': user.profile.activation_key})
+        subject = 'Активация аккаунта papablog.org'
         from_email = settings.DEFAULT_FROM_EMAIL
         message = 'This is my test message'
         recipient = [self.cleaned_data.get("email")]
-        html_message = '<h1>Для завершения регистрации пройдите по ссылке: {key}</h1>'.format(key=user.profile.activation_key)
+        html_message = '<p>Привет, {name}!</p><br>' \
+                       '<p>Для завершения регистрации пройдите по ссылке: {key}</p>'.format(name=user.username, key=path_)
 
         send_mail(subject, message, from_email, recipient, fail_silently=False, html_message=html_message)
 
         if commit:
             user.save()
         return user
-
-
