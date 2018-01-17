@@ -2,11 +2,13 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf.urls.static import static
+from django.contrib.flatpages import urls
 
 
 urlpatterns = [
     url(r'^user/', include("profiles.urls", namespace='profiles')),
     url(r'^admin/', admin.site.urls),
+    url(r'^pages/', include(urls)),
     url(r'^', include("posts.urls", namespace='posts')),
 
 ]

@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block description %}{{ flatpage.previewText }}{% endblock description %}
+{% block title %}ПапаБлог - {{ flatpage.title }}{% endblock title %}
+
+<div class="row">
+{% block content %}
+<div class="col-md-12 w-100">
+    <div class="single-post">
+        <div class="article-and-feature post-bottom-content bg-box-shadow each-section" data-scroll-index="0">
+        <h3>{{ flatpage.title }}</h3>
+            <div class="article-content-static">
+                {{ flatpage.content }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+</div>

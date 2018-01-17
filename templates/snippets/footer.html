@@ -1,15 +1,15 @@
+{% load flatpages %}
+{% get_flatpages as flatpages %}
+
 <div class="bottom container-fluid">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <div class="useful-links widget">
-                <h3> Полезные ссылки</h3>
+                <h3>Полезные ссылки</h3>
                 <ul class="pull-left">
-                    <li><a href="#">О ресурсе</a></li>
-                    <li><a href="#">Предложить текст</a></li>
-{#                </ul>#}
-{#                <ul class="pull-right">#}
-                    <li><a href="#">Сотрудничество</a></li>
-                    <li><a href="#">Правообладателям</a></li>
+                  {% for page in flatpages %}
+                    <li><a href="/pages{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></li>
+                  {% endfor %}
                 </ul>
             </div>
         </div>
@@ -40,7 +40,5 @@
             </div>
         </div>
         <!-- End Column -->
-
-        <!-- ___Start Social Icons Column___ -->
-    </div><!-- End Row -->
+    </div>
 </div>

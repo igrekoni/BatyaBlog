@@ -2156,6 +2156,19 @@ select.form-control {
   padding: 50px 50px 0px;
   font-family: "Open Sans", sans-serif;
 }
+.article-content-static {
+  margin-top: 15px;
+  margin-bottom: 40px;
+  font-family: "Open Sans", sans-serif;
+}
+.article-content-static img {
+ margin-bottom: 40px;
+}
+.article-content-static p {
+  margin: 0 50px 10px 50px;
+  text-transform: none;
+  font-size: 15px;
+}
 .article-content p {
   font-size: 14px;
   text-transform: none;
