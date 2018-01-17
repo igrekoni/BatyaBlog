@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from .models import Post
 from .forms import PostForm
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView
 
 
 class Mainpage(ListView):
@@ -30,8 +30,6 @@ def create(request):
         'form': form,
     }
     return render(request, 'posts/create.html', context)
-# class Create(CreateView):
-#     template_name = 'posts/create.html'
 
 
 class Detail(DetailView):
@@ -114,16 +112,3 @@ class TagListView(ListView):
         context = super(TagListView, self).get_context_data(**kwargs)
         context["tag"] = self.kwargs.get("slug")
         return context
-
-
-# class CategoryListView(ListView):
-#     template_name = "posts/postlist.html"
-#     paginate_by = "3"
-#
-#     def get_queryset(self):
-#         return Post.objects.filter(category=self).all()
-#
-#     def get_context_data(self, **kwargs):
-#         context = super(CategoryListView, self).get_context_data(**kwargs)
-#         context["category"] = self.kwargs.get("category")
-#         return context
