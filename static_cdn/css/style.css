@@ -1647,7 +1647,10 @@ iframe {
 }
 .newsletter {
   border-left: 1px solid #E9E9E9;
+  /*padding: 40px 20px 40px 40px;*/
   padding-left: 40px;
+  padding-right: 20px;
+  padding-bottom: 40px;
   min-height: 300px;
 }
 .newsletter h3 {

@@ -3,28 +3,32 @@
 {% block title %}ПапаБлог - 404 - Страница не найдена{% endblock title %}
 
 {% block sidebar %}{% endblock sidebar %}
-
+<div class="row">
 {% block content %}
-
-<div class="me404">
-  <div class="clouds"></div>
-  <div class="the404"></div>
-  <div class="monkey">
-    <div class="monkey-eye-l"></div>
-    <div class="monkey-eye-r"></div>
-  </div>
-  <div class="moon"></div>
-  <div class="platform"></div>
-  <div class="star1"></div>
-  <div class="star2"></div>
-  <div class="star3"></div>
-  <div class="star4"></div>
-  <div class="swirl"></div>
-  <div class="sword">
-    <div class="sword-shadow"></div>
-  </div>
-  <div class="tetris"></div>
-  <div class="triforce"></div>
+<div class="single-post">
+    <div class="article-and-feature post-bottom-content bg-box-shadow each-section" data-scroll-index="0">
+        <h3>Страница не найдена</h3>
+    <div class="me404">
+          <div class="clouds"></div>
+          <div class="the404"></div>
+          <div class="monkey">
+            <div class="monkey-eye-l"></div>
+            <div class="monkey-eye-r"></div>
+          </div>
+          <div class="moon"></div>
+          <div class="platform"></div>
+          <div class="star1"></div>
+          <div class="star2"></div>
+          <div class="star3"></div>
+          <div class="star4"></div>
+          <div class="swirl"></div>
+          <div class="sword">
+            <div class="sword-shadow"></div>
+          </div>
+          <div class="tetris"></div>
+          <div class="triforce"></div>
+    </div>
+    </div>
 </div>
 
 <style>
@@ -49,11 +53,6 @@ lesshat-selector {
 .me404 {
   height: 451px;
   width: 840px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -420px;
-  margin-top: -225px;
 }
 .clouds {
   background: url("http://yagz.net/testrealm/404/clouds.png");
@@ -61,7 +60,7 @@ lesshat-selector {
   height: 304px;
   position: absolute;
   left: 134px;
-  top: 61px;
+  top: 111px;
   -webkit-animation: clouds 9s infinite ease-in-out;
   -moz-animation: clouds 9s infinite ease-in-out;
   -o-animation: clouds 9s infinite ease-in-out;
@@ -82,7 +81,7 @@ lesshat-selector {
   height: 142px;
   position: absolute;
   left: 242px;
-  top: 129px;
+  top: 179px;
 }
 .monkey {
   background: url("http://yagz.net/testrealm/404/monkeya.png");
@@ -90,7 +89,7 @@ lesshat-selector {
   height: 140px;
   position: absolute;
   left: 31px;
-  top: 218px;
+  top: 268px;
 }
 .monkey-eye-l {
   background: url("http://yagz.net/testrealm/404/monkey-eye-l.png");
@@ -140,7 +139,7 @@ lesshat-selector {
   height: 94px;
   position: absolute;
   left: 564px;
-  top: 25px;
+  top: 75px;
   -webkit-animation: moon-float 6s infinite ease-in-out;
   -moz-animation: moon-float 6s infinite ease-in-out;
   -o-animation: moon-float 6s infinite ease-in-out;
@@ -161,7 +160,7 @@ lesshat-selector {
   height: 79px;
   position: absolute;
   left: 58px;
-  top: 355px;
+  top: 405px;
 }
 .star1 {
   background: url("http://yagz.net/testrealm/404/star1.png");
@@ -169,7 +168,7 @@ lesshat-selector {
   height: 37px;
   position: absolute;
   left: 66px;
-  top: 208px;
+  top: 258px;
   -webkit-animation: star1 12s infinite linear, star1-fade 12s infinite ease-in-out;
   -moz-animation: star1 12s infinite linear, star1-fade 12s infinite ease-in-out;
   -o-animation: star1 12s infinite linear, star1-fade 12s infinite ease-in-out;
@@ -181,7 +180,7 @@ lesshat-selector {
   height: 37px;
   position: absolute;
   left: 446px;
-  top: 73px;
+  top: 123px;
   -webkit-animation: star2 12s infinite linear, star2-fade 12s infinite ease-in-out;
   -moz-animation: star2 12s infinite linear, star2-fade 12s infinite ease-in-out;
   -o-animation: star2 12s infinite linear, star2-fade 12s infinite ease-in-out;
@@ -193,7 +192,7 @@ lesshat-selector {
   height: 21px;
   position: relative;
   left: 680px;
-  top: 281px;
+  top: 331px;
   -webkit-animation: star3 12s infinite linear, star3-fade 12s infinite ease-in-out;
   -moz-animation: star3 12s infinite linear, star3-fade 12s infinite ease-in-out;
   -o-animation: star3 12s infinite linear, star3-fade 12s infinite ease-in-out;
@@ -205,7 +204,7 @@ lesshat-selector {
   height: 21px;
   position: absolute;
   left: 232px;
-  top: 336px;
+  top: 386px;
   -webkit-animation: star4 12s infinite linear, star4-fade 12s infinite ease-in-out;
   -moz-animation: star4 12s infinite linear, star4-fade 12s infinite ease-in-out;
   -o-animation: star4 12s infinite linear, star4-fade 12s infinite ease-in-out;
@@ -289,7 +288,7 @@ lesshat-selector {
   height: 72px;
   position: absolute;
   left: 734px;
-  top: 336px;
+  top: 386px;
   -webkit-animation: swirl-float 4s infinite ease-in-out;
   -moz-animation: swirl-float 4s infinite ease-in-out;
   -o-animation: swirl-float 4s infinite ease-in-out;
@@ -310,7 +309,7 @@ lesshat-selector {
   height: 78px;
   position: absolute;
   left: 335px;
-  top: 127px;
+  top: 177px;
   transform-origin: 100px 78px;
   -webkit-animation: sword 3s infinite ease-out;
   -moz-animation: sword 3s infinite ease-out;
@@ -354,7 +353,7 @@ lesshat-selector {
   height: 96px;
   position: absolute;
   left: 459px;
-  top: 312px;
+  top: 362px;
   -webkit-animation: rotate 10s steps(1) infinite alternate;
   -moz-animation: rotate 10s steps(1) infinite alternate;
   -o-animation: rotate 10s steps(1) infinite alternate;
@@ -375,7 +374,7 @@ lesshat-selector {
   height: 61px;
   position: absolute;
   left: 130px;
-  top: 41px;
+  top: 91px;
   -webkit-animation: triforce-float 3s infinite ease-in-out;
   -moz-animation: triforce-float 3s infinite ease-in-out;
   -o-animation: triforce-float 3s infinite ease-in-out;
@@ -394,3 +393,4 @@ lesshat-selector {
 </style>
 
 {% endblock content %}
+</div>
