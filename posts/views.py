@@ -5,11 +5,18 @@ from django.db.models import Q
 from .models import Post
 from .forms import PostForm
 from django.views.generic import ListView, DetailView
+from taggit.models import Tag
 
 
 class Mainpage(ListView):
     template_name = "posts/postlist.html"
     paginate_by = "3"
+    all_tags = Tag.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['all_tags'] = Tag.objects.all()
+        return context
 
     def get_queryset(self):
         return Post.objects.all()
