@@ -44,7 +44,7 @@ class Detail(DetailView):
     model = Post
 
 
-def update(request, slug=None):
+def update(request, slug=None, *args, **kwargs):
     if not request.user.is_staff or not request.user.is_superuser:
         raise Http404
     instance = get_object_or_404(Post, slug=slug)

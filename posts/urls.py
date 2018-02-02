@@ -23,9 +23,9 @@ urlpatterns = [
     url(r'^things/$', Things.as_view(), name='things'),
     url(r'^dosug/$', Dosug.as_view(), name='dosug'),
     url(r'^create/$', create, name='create'),
-    url(r'^(?P<slug>[\w-]+)/$', Detail.as_view(), name='detail'),
-    url(r'^(?P<slug>[\w-]+)/edit/$', update, name='update'),
-    url(r'^(?P<slug>[\w-]+)/delete/$', delete),
+    url(r'^(?P<category>[\w-]+)/(?P<slug>[\w-]+)/$', Detail.as_view(), name='detail'),
+    url(r'^(?P<category>[\w-]+)/(?P<slug>[\w-]+)/edit/$', update, name='update'),
+    url(r'^(?P<category>[\w-]+)/(?P<slug>[\w-]+)/delete/$', delete),
     url(r'^tag/(?P<slug>[\w-]+)/$', TagListView.as_view(), name='tagged'),
 
 

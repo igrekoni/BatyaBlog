@@ -36,7 +36,15 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("posts:detail", kwargs={"slug": self.slug})
+        if self.category == u'Здоровье':
+            cat = "health"
+        elif self.category == u'Развитие':
+            cat = "growth"
+        elif self.category == u'Вещи':
+            cat = "things"
+        elif self.category == u'Досуг':
+            cat = "dosug"
+        return reverse("posts:detail", kwargs={"category": cat, "slug": self.slug})
 
     class Meta:
         ordering = ["-timestamp"]
