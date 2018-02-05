@@ -12,6 +12,7 @@ from .views import (
         Dosug,
         Growth,
         TagListView,
+robots
         # CategoryListView,
     )
 
@@ -27,7 +28,7 @@ urlpatterns = [
     url(r'^(?P<category>[\w-]+)/(?P<slug>[\w-]+)/edit/$', update, name='update'),
     url(r'^(?P<category>[\w-]+)/(?P<slug>[\w-]+)/delete/$', delete),
     url(r'^tag/(?P<slug>[\w-]+)/$', TagListView.as_view(), name='tagged'),
-
+    url(r'^robots.txt$', robots),
 
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \

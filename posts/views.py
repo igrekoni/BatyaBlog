@@ -1,6 +1,6 @@
 from django.http import Http404, HttpResponseRedirect
 from django.contrib import messages
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.db.models import Q
 from .models import Post
 from .forms import PostForm
@@ -119,3 +119,7 @@ class TagListView(ListView):
         context = super(TagListView, self).get_context_data(**kwargs)
         context["tag"] = self.kwargs.get("slug")
         return context
+
+
+def robots(request):
+    return render_to_response('robots.txt', content_type='text/plain')

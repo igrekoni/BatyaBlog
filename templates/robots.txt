@@ -1,0 +1,24 @@
+User-agent: *
+Disallow: /admin/*
+Disallow: /user/*
+Disallow: /static/*
+Disallow: /media/*
+Disallow: /create
+Disallow: /edit
+Disallow: /delete
+Disallow: /tag
+Sitemap: http://papablog.org/sitemap.xml
+
+User-agent: Yandex
+Disallow: /admin/*
+Disallow: /user/*
+Disallow: /static/*
+Disallow: /media/*
+Disallow: /create
+Disallow: /edit
+Disallow: /delete
+Disallow: /tag
+Sitemap: http://papablog.org/sitemap.xml
+
+
+Host: http://papablog.org
