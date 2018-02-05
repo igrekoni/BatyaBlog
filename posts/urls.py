@@ -12,7 +12,7 @@ from .views import (
         Dosug,
         Growth,
         TagListView,
-robots
+        robots,
         # CategoryListView,
     )
 

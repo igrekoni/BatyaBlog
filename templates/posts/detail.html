@@ -12,7 +12,7 @@
 
     <!-- ___Start Article & Feature___ -->
         <div class="article-and-feature post-bottom-content bg-box-shadow each-section" data-scroll-index="0">
-            <h3>{{ object.title }} <!-- <span class="mobile-bg">9<a class="mobile-bg" href="#comments">9 комментариев</a></span> --> </h3>
+            <h3>{{ object.title }} <!-- <span class="mobile-bg">9<a class="mobile-bg" href="#disqus_thread">9 комментариев</a></span> --> </h3>
             <div class="meta-info">
                 <p class="date"><i class="icon-clock"></i>{{ object.publish }}</p>
                 <p class="category"><i class="icon-bookmark"></i>  <a href="/{% if object.category == 'Здоровье' %}health{% elif object.category == 'Развитие' %}growth{% elif object.category == 'Вещи' %}things{% elif object.category == 'Досуг' %}dosug{% endif %}/">{{ object.category }}</a> </p>
@@ -101,6 +101,64 @@
 {#        </div><!-- End Row -->#}
 {#    </div><!-- End Contact Form -->#}
 {#    </div>#}
+
+
+
+
+
+    <div data-scroll-index="5" class="each-section leave-a-comment">
+    <h3>Комментировать</h3><a name="comments"></a>
+    <div class="comment-form common-border">
+        <div class="row">
+            <div id="disqus_thread"></div>
+            <script>
+
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+            /*
+            var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            */
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://http-papablog-org.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Включите поддержку JavaScript чтобы увидеть <a href="https://disqus.com/?ref_noscript">комментарии.</a></noscript>
+
+        </div><!-- End Row -->
+    </div><!-- End Contact Form -->
+    </div>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://http-papablog-org.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{#<script id="dsq-count-scr" src="//http-papablog-org.disqus.com/count.js" async></script>#}
+
+
+
 
 </div>
 {% endblock content %}
