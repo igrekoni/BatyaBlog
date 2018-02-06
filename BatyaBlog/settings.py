@@ -13,7 +13,7 @@ SECRET_KEY = '*=%uu)tohfft8ni4mb2*2h3dvq^v_-7*zb0y-g$6kuw7di8u#d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['papablog.org', 'localhost', '127.0.0.1']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'django.contrib.sitemaps',
     'pagedown',
     'posts',
     'taggit',
