@@ -35,7 +35,7 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
+    def get_absolute_url(self, *args, **kwargs):
         if self.category == u'Здоровье':
             cat = "health"
         elif self.category == u'Развитие':

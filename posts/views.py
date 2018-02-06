@@ -81,6 +81,11 @@ class Health(ListView):
     paginate_by = "3"
 
     def get_queryset(self):
+        # if self.request.method == 'GET' and '/health/' in str(self.request):
+        #     return Post.objects.all().filter(category__iexact='Здоровье')
+        # elif self.request.method == 'GET' and '/things/' in str(self.request):
+        #     return Post.objects.all().filter(category__iexact='Вещи')
+        # else:
         return Post.objects.all().filter(category__iexact='Здоровье')
 
 
@@ -112,10 +117,10 @@ class TagListView(ListView):
     template_name = "posts/postlist.html"
     paginate_by = "3"
 
-    def get_queryset(self):
+    def get_queryset(self, *args, **kwargs):
         return Post.objects.filter(tags__slug=self.kwargs.get("slug")).all()
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, *args, **kwargs):
         context = super(TagListView, self).get_context_data(**kwargs)
         context["tag"] = self.kwargs.get("slug")
         return context
