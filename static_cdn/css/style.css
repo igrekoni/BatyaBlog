@@ -2181,8 +2181,9 @@ select.form-control {
   font-family: open sans;
   font-size: 14px;
   font-weight: normal;
-  list-style: outside none none;
-  padding: 10px 50px;
+  /* list-style: outside none none; */
+  line-height: 25px;
+  padding: 10px 0 0 0;
   text-transform: none;
 }
 .article-content ul li i {
