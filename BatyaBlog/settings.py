@@ -16,6 +16,16 @@ DEBUG = True
 ALLOWED_HOSTS = ['papablog.org', 'localhost', '127.0.0.1']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'info@papablog.org'
+# SERVER_EMAIL = 'info@papablog.org'
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 1025
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'igrekoni@gmail.com'
+# EMAIL_HOST_PASSWORD = 'gre4kan666'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+
 
 # Application definition
 
