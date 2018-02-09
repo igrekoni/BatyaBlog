@@ -3360,3 +3360,9 @@ a.icon-right {
 .img-list img {
    transform: translateY(-25%);
 }
+
+.content-markdown p > img {
+  display: block;
+  margin: 0 auto;
+  padding: 25px 0 25px 0;
+}
