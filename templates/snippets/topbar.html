@@ -27,8 +27,11 @@
         {% if request.user.is_authenticated %}
             <div class="user-body targetDiv" id="div2">
                 <div class="row">
-                    Вы уже залогинены, {{ user.username }}.
-                    <form action="/user/logout"><button type="submit" class="btn btn-default form-control no-radius">Выйти</button></form>
+                    <div class="col-md-4">Вы уже залогинены, {{ user.username }}.</div>
+                    <div class="col-md-8">
+                        <form action="/create"><button type="submit" class="btn btn-default form-control no-radius">Добавить запись</button></form>
+                        <form action="/user/logout"><button type="submit" class="btn btn-default form-control no-radius">Выйти</button></form>
+                    </div>
                 </div>
             </div>
         {% else %}

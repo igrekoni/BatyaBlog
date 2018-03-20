@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'pagedown',
     'posts',
     'taggit',
-    'profiles'
+    'profiles',
+    'disqus'
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,8 @@ STATICFILES_DIRS = [
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
 LOGIN_REDIRECT_URL = '/'
+
+SITE_ID = 1
+
+DISQUS_API_KEY = 'XulAvPOcluQVfX9ocw2vhLqKDwF4o70Nyq2WdTEEoea07sfDUEd78QEkhINVYqlP'
+DISQUS_WEBSITE_SHORTNAME = 'http-papablog-org'

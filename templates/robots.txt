@@ -3,6 +3,7 @@ Disallow: /admin/*
 Disallow: /user/*
 Disallow: /static/*
 Disallow: /media/*
+Disallow: /?page=*
 Disallow: /create
 Disallow: /edit
 Disallow: /delete
@@ -14,6 +15,7 @@ Disallow: /admin/*
 Disallow: /user/*
 Disallow: /static/*
 Disallow: /media/*
+Disallow: /?page=*
 Disallow: /create
 Disallow: /edit
 Disallow: /delete

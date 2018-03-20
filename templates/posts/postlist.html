@@ -1,4 +1,5 @@
 {% extends "index.html" %}
+{% load disqus_tags %}
 {% load static %}
 
 {% block content %}
@@ -7,18 +8,20 @@
     {% for obj in object_list %}
         <div class="col-md-12">
             <div class="article-and-feature post-bottom-content one-full-post">
-                <h3><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <!-- <span class="mobile-bg">9<a class="mobile-bg" href="#">9 комментов</a></span> --> </h3>
+                <h3><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></h3>
                 <div class="meta-info">
                     <p class="date"><i class="icon-clock"></i>{{ obj.publish|date:"F d, Y" }}</p>
                     <p class="category"><i class="icon-bookmark"></i>  <a href="/{% if obj.category == 'Здоровье' %}health{% elif obj.category == 'Развитие' %}growth{% elif obj.category == 'Вещи' %}things{% elif obj.category == 'Досуг' %}dosug{% endif %}/">{{ obj.category }}</a> </p>
                     <p class="author"><i class="icon-user"></i> by <a href="/user/{{ obj.user }}">{{ obj.user }}</a></p>
+                    <p class="comments-count"><i class="icon-commenting"></i> <a href="{{ obj.get_absolute_url }}#disqus_thread" data-disqus-identifier="{{ object.id }}">{% disqus_num_replies %}</a></p>
                 </div>
                 {% if obj.image %}<div class="img-list">
                     <a href="{{ obj.get_absolute_url }}"><img src="{{ obj.image.url }}" alt="{{ obj.title }}" class="img-responsive"></a>
                 {% endif %}</div>
                 <div class="single-post-content">
                     <div class="content-markdown">{{ obj.previewText }}</div>
-                <a class="mobile-color" href="{{ obj.get_absolute_url }}"> Читать дальше <i class="fa fa-arrow-right"></i> </a>
+                    <a class="mobile-color" href="{{ obj.get_absolute_url }}"> Читать дальше <i class="fa fa-arrow-right"></i> </a>
+
                 </div>
             </div>
         </div>
