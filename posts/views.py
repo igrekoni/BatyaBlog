@@ -1,4 +1,4 @@
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect, request
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.db.models import Q
@@ -21,6 +21,18 @@ class Mainpage(ListView):
     def get_queryset(self):
         q = self.request
         q = str(q)
+
+        query = self.request.GET.get('q')
+        print(query)
+        if query:
+            return Post.objects.all().filter(
+                Q(title__icontains=query) |
+                Q(category__icontains=query) |
+                Q(previewText__icontains=query) |
+                Q(fullText__icontains=query) |
+                Q(user__first_name__icontains=query) |
+                Q(user__last_name__icontains=query)
+            )
 
         if self.request.method == 'GET' and '/health/' in q:
             return Post.objects.all().filter(category__iexact='Здоровье')
