@@ -147,8 +147,8 @@
 {#</div>#}
 
 
-{#<ul>#}
-{#{% for tag in all_tags %}#}
-{#    <li>{{ tag.name }}</li>#}
-{#{% endfor %}#}
-{#</ul>#}
+<p>
+{% for tag in all_tags %}
+    <a href="{% url "posts:tagged" tag.slug %}">{{ tag.name }}</a>,
+{% endfor %}
+</p>

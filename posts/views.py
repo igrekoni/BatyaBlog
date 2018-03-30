@@ -19,7 +19,19 @@ class Mainpage(ListView):
         return context
 
     def get_queryset(self):
-        return Post.objects.all()
+        q = self.request
+        q = str(q)
+
+        if self.request.method == 'GET' and '/health/' in q:
+            return Post.objects.all().filter(category__iexact='Здоровье')
+        elif self.request.method == 'GET' and '/things/' in q:
+            return Post.objects.all().filter(category__iexact='Вещи')
+        elif self.request.method == 'GET' and '/growth/' in q:
+            return Post.objects.all().filter(category__iexact='Развитие')
+        elif self.request.method == 'GET' and '/dosug/' in q:
+            return Post.objects.all().filter(category__iexact='Досуг')
+        else:
+            return Post.objects.all()
 
 
 def create(request):
@@ -71,48 +83,6 @@ def delete(request, slug=None):
     return redirect('posts:mainpage')
 
 
-#
-#              PAGES CLASSES
-#
-
-
-class Health(ListView):
-    template_name = "posts/postlist.html"
-    paginate_by = "3"
-
-    def get_queryset(self):
-        # if self.request.method == 'GET' and '/health/' in str(self.request):
-        #     return Post.objects.all().filter(category__iexact='Здоровье')
-        # elif self.request.method == 'GET' and '/things/' in str(self.request):
-        #     return Post.objects.all().filter(category__iexact='Вещи')
-        # else:
-        return Post.objects.all().filter(category__iexact='Здоровье')
-
-
-class Things(ListView):
-    template_name = "posts/postlist.html"
-    paginate_by = "3"
-
-    def get_queryset(self):
-        return Post.objects.all().filter(category__iexact='Вещи')
-
-
-class Dosug(ListView):
-    template_name = "posts/postlist.html"
-    paginate_by = "3"
-
-    def get_queryset(self):
-        return Post.objects.all().filter(category__iexact='Досуг')
-
-
-class Growth(ListView):
-    template_name = "posts/postlist.html"
-    paginate_by = "3"
-
-    def get_queryset(self):
-        return Post.objects.all().filter(category__iexact='Развитие')
-
-
 class TagListView(ListView):
     template_name = "posts/postlist.html"
     paginate_by = "3"
@@ -128,3 +98,52 @@ class TagListView(ListView):
 
 def robots(request):
     return render_to_response('robots.txt', content_type='text/plain')
+
+#
+#              PAGES CLASSES
+#
+
+
+# class Health(ListView):
+#     template_name = "posts/postlist.html"
+#     paginate_by = "3"
+#
+#     def get_queryset(self):
+#         q = self.request
+#         q = str(q)
+#         print(q)
+#
+#         if self.request.method == 'GET' and '/health/' in q:
+#             return Post.objects.all().filter(category__iexact='Здоровье')
+#         elif self.request.method == 'GET' and '/things/' in q:
+#             return Post.objects.all().filter(category__iexact='Досуг')
+#         elif self.request.method == 'GET' and '/things/' in q:
+#             return Post.objects.all().filter(category__iexact='Досуг')
+#         elif self.request.method == 'GET' and '/things/' in q:
+#             return Post.objects.all().filter(category__iexact='Досуг')
+#         else:
+#             return Post.objects.all()
+#
+#
+# class Things(ListView):
+#     template_name = "posts/postlist.html"
+#     paginate_by = "3"
+#
+#     def get_queryset(self):
+#         return Post.objects.all().filter(category__iexact='Вещи')
+#
+#
+# class Dosug(ListView):
+#     template_name = "posts/postlist.html"
+#     paginate_by = "3"
+#
+#     def get_queryset(self):
+#         return Post.objects.all().filter(category__iexact='Досуг')
+#
+#
+# class Growth(ListView):
+#     template_name = "posts/postlist.html"
+#     paginate_by = "3"
+#
+#     def get_queryset(self):
+#         return Post.objects.all().filter(category__iexact='Развитие')
